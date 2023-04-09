@@ -67,7 +67,7 @@ namespace LicWeb.Controllers
                 }
                 var adeverinta = adeverintaViewModel.Adeverinta;
                 List<string> uploadedAdeverinta = new List<string>();
-                string adeverintaFileName = $@"{Guid.NewGuid()}.txt"; ;
+                string adeverintaFileName = $@"{Guid.NewGuid()}.pdf"; ;
                 using (FileStream stream = new FileStream(Path.Combine(path, adeverintaFileName), FileMode.Create))
                 {
                     adeverinta.CopyTo(stream);
@@ -84,8 +84,8 @@ namespace LicWeb.Controllers
                 Debug.WriteLine("DOCTOR ID:" + DocId.Id);
                 int passed;
                 var getPath = _context.Adeverinte.FirstOrDefault(b => b.DoctorId == DocId.Id);
-                string pathToAdeverinta = getPath.PathToAdeverinta;
-                if (CA.VerifySignature(DocId.CheiePublica, signature, pathToAdeverinta)){
+                if (CA.VerifySignature(DocId.CheiePublica, signature, adeverintaFileName))
+                {
                     passed = 1;
                 }
                 else

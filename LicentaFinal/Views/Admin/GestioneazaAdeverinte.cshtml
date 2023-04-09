@@ -71,7 +71,7 @@
                     <a class="btn btn-primary" onclick="confirmAllow('@adeverinta.Id', false)">Nu</a>
                 </span>
                 <span id="AllowSpan_@adeverinta.Id">
-                    <a class="btn btn-danger" style="margin-left:15px;"
+                    <a class="btn btn-success" style="margin-left:15px;"
                    onclick="confirmAllow('@adeverinta.Id', true)">Aproba</a>
 
                 </span>
@@ -86,6 +86,9 @@
                     <a class="btn btn-danger" style="margin-left:15px;"
                    onclick="confirmDeny('@adeverinta.Id', true)">Respinge</a>
                 </span>
+            </form>
+            <form method="post" asp-action="Download" asp-controller="Admin" asp-route-id="@adeverinta.Id">
+                <button type="submit" class="btn btn-info" style="margin-right:7px; margin-left:15px;">Descarca</button>
             </form>
         </div>
     </div>

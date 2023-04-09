@@ -234,6 +234,9 @@ namespace LicWeb
         }
         public bool VerifySignature(string PublicKey, string Signature, string pathToAdeverinta)
         {
+            Debug.WriteLine(PublicKey);
+            Debug.WriteLine(Signature);
+            Debug.WriteLine(pathToAdeverinta);
             byte[] BytesToSign = File.ReadAllBytes("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + pathToAdeverinta);
             byte[] ExpectedSignatureBytes = Convert.FromBase64String(Signature);
             string adaptedPK = "-----BEGIN PUBLIC KEY-----" + PublicKey + "-----END PUBLIC KEY-----";

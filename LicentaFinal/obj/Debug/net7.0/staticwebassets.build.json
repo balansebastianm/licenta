@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p56yqPH2QHY9ihscGnSYZ7SOjPmoS/02pZfAqU9nJbM=",
+  "Hash": "nZA0ZUhWPno3PkbMXpuwzPilXgR3+8n7M0maAv0HDck=",
   "Source": "LicWeb",
   "BasePath": "_content/LicWeb",
   "Mode": "Default",
@@ -2057,6 +2057,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1a2d9b15-808a-490f-86aa-da631a50e8a5.pem"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\1b1b97f9-417f-4d27-ba4c-4c2fcdb01d79.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/1b1b97f9-417f-4d27-ba4c-4c2fcdb01d79.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1b1b97f9-417f-4d27-ba4c-4c2fcdb01d79.pem"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\1d74ac9a-2b0f-4fc6-a53d-c44707ae3e59.txt",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -2072,6 +2089,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\1d74ac9a-2b0f-4fc6-a53d-c44707ae3e59.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\1fa6d799-a01c-485b-bb73-4f7504a20e4f.pdf",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/1fa6d799-a01c-485b-bb73-4f7504a20e4f.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1fa6d799-a01c-485b-bb73-4f7504a20e4f.pdf"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\22c7d8bf-83d2-46cd-92d4-cd723a88bc41.txt",
@@ -2193,6 +2227,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\31755f51-000e-4f8c-b5c0-5723db76aa2c.txt"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\339d925d-3c70-4247-be68-16d0fe7088e0.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/339d925d-3c70-4247-be68-16d0fe7088e0.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\339d925d-3c70-4247-be68-16d0fe7088e0.pem"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\385dc050-1a1d-494c-a8c9-a833b8f0ff11.txt",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -2208,6 +2259,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\385dc050-1a1d-494c-a8c9-a833b8f0ff11.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\3be716a2-7524-4094-95e4-ba9a366a2052.pdf",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/3be716a2-7524-4094-95e4-ba9a366a2052.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\3be716a2-7524-4094-95e4-ba9a366a2052.pdf"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\42b28dc5-eeea-4d5d-9832-f448101961ce.txt",
@@ -2363,6 +2431,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\4dfff878-d1ce-4447-a2f3-60e8ac38e821.txt"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\51591f58-3b10-440b-ba0c-dd5e82ef22a2.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/51591f58-3b10-440b-ba0c-dd5e82ef22a2.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\51591f58-3b10-440b-ba0c-dd5e82ef22a2.pem"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\54f1e461-314e-4f76-bd39-cb74731cc664.pem",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -2378,6 +2463,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\54f1e461-314e-4f76-bd39-cb74731cc664.pem"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\55a83ec0-29f2-4d51-9ba4-ea2beb833bbb.pdf",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/55a83ec0-29f2-4d51-9ba4-ea2beb833bbb.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\55a83ec0-29f2-4d51-9ba4-ea2beb833bbb.pdf"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\56d40f56-88ec-47af-ba10-84d4da240191.pem",
@@ -2533,6 +2635,40 @@
       "OriginalItemSpec": "wwwroot\\uploads\\7160e6d2-d65f-4f79-9ab1-af14cd6d970f.pem"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\77bdc18b-7c1f-48a9-860f-6fa4893a9590.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/77bdc18b-7c1f-48a9-860f-6fa4893a9590.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\77bdc18b-7c1f-48a9-860f-6fa4893a9590.pem"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\805f7cb7-1ee6-4611-a060-605fedad1c76.txt",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/805f7cb7-1ee6-4611-a060-605fedad1c76.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\805f7cb7-1ee6-4611-a060-605fedad1c76.txt"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\8a4143c3-8c99-4552-9c63-4072d6a03070.txt",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -2565,6 +2701,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\8ff347ca-b1b0-44cb-ba38-9d10fc81efc2.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\9067ab3d-3041-40c6-b331-584a51acd02f.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/9067ab3d-3041-40c6-b331-584a51acd02f.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\9067ab3d-3041-40c6-b331-584a51acd02f.pem"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\92f941f9-7eaf-48ee-abe5-d430f8fca5b0.txt",
@@ -2616,6 +2769,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\97bc8ec0-1a36-4fb4-92ff-b643f8820a1e.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\9850654e-d099-4fa0-a9ce-80539641fd7f.txt",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/9850654e-d099-4fa0-a9ce-80539641fd7f.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\9850654e-d099-4fa0-a9ce-80539641fd7f.txt"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\9f1598fa-e879-4d33-8cbb-983e01695527.txt",
@@ -2839,6 +3009,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b3d61b06-3138-4071-a619-9e64f1a2dfd4.pem"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\b6de47ad-bf5f-45d0-b10e-fe2b642ae8ca.pdf",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/b6de47ad-bf5f-45d0-b10e-fe2b642ae8ca.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\b6de47ad-bf5f-45d0-b10e-fe2b642ae8ca.pdf"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\b79f7e90-9bef-48e4-b9cd-184e7b71e1e1.txt",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -2854,6 +3041,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\b79f7e90-9bef-48e4-b9cd-184e7b71e1e1.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\bdbb40b5-6df5-4b1c-9614-06b2e2e93f5b.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/bdbb40b5-6df5-4b1c-9614-06b2e2e93f5b.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\bdbb40b5-6df5-4b1c-9614-06b2e2e93f5b.pem"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\bdc24cb9-afa6-4ed6-9da0-5040e7bbd0d9.txt",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/bdc24cb9-afa6-4ed6-9da0-5040e7bbd0d9.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\bdc24cb9-afa6-4ed6-9da0-5040e7bbd0d9.txt"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\c1713b97-e8fa-4bfc-8b7a-c495414df270.txt",
@@ -2922,6 +3143,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\c700f428-aed0-4edb-8c35-e60c3c9356b6.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\c83e29b2-85d4-46fd-a131-7f15fe529edc.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/c83e29b2-85d4-46fd-a131-7f15fe529edc.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c83e29b2-85d4-46fd-a131-7f15fe529edc.pem"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\d6774370-494c-4b79-814d-75153765241f.txt",
@@ -3043,6 +3281,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\e659555d-7976-4d50-a6f2-2185ff6058c0.txt"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\e8861d1a-0050-4615-b7a5-c8847555f237.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/e8861d1a-0050-4615-b7a5-c8847555f237.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\e8861d1a-0050-4615-b7a5-c8847555f237.pem"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\e969329c-7d82-44e8-93bd-52c92c856365.txt",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -3092,6 +3347,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\eab36b02-a857-4fe4-a61e-4846e85eb9d1.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\ec2da065-0fb7-408b-b71a-57a265560b4d.pdf",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/ec2da065-0fb7-408b-b71a-57a265560b4d.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ec2da065-0fb7-408b-b71a-57a265560b4d.pdf"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\eca9458b-7598-4089-9040-b4b6f5c1c21f.txt",

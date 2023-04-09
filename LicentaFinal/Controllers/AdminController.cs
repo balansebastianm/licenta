@@ -376,9 +376,29 @@ namespace LicWeb.Controllers
         public async Task<ActionResult> GestioneazaAdeverinte()
         {
             var adeverinte = await _adeverintaRepository.GetAll();
-            
-
                 return View(adeverinte);
+        }
+        [HttpPost]
+        public async Task<ActionResult> RespingeAdeverinta(int id)
+        {
+            var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
+            _adeverintaRepository.Delete(adeverinta);
+            _adeverintaRepository.Save();
+            return RedirectToAction("GestioneazaAdeverinte");
+        }
+        public async Task<IActionResult> Download(int id)
+        {
+            var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
+            var path = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return File(memory, "text/plain", Path.GetFileName(path));
+
         }
     }
 }
