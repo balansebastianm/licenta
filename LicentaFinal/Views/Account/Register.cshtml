@@ -1,0 +1,128 @@
+﻿@using LicWeb.ViewModels
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Inregistrare";
+}
+<section class="vh-auto">
+    <div class="container h-auto">
+        <div class="row d-flex" style="padding-top: 30px">
+            <form asp-action="Register" class="row d-flex justify-content-center align-items-center needs-validation">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://i.ibb.co/7r3YSSs/1-removebg-preview.png"
+                         class="img-fluid" alt="Imagine Universitate">
+                </div>
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5 " style="">
+                    <div class="card text-white cardset" style="border-radius: 1rem;">
+                        @if (TempData["Eroare"] != null)
+                        {
+                            <div class="col-md-12 alert alert-danger">
+                                <span><b>Eroare!</b> - @TempData["Eroare"] </span>
+                            </div>
+                        }
+                        else if (TempData["Succes"] != null)
+                        {
+                            <div class="col-md-12 alert alert-success">
+                                <span><b>Succes!</b> - @TempData["Succes"] </span>
+                            </div>
+                        }
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <h2 class="fw-bold mb-2 text-uppercase">Inregistrare</h2>
+                                <p class="text-white mb-5">Creaza un cont nou.</p>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="CodInregistrare" type="text" id="typeNameX" class="form-control form-control-lg" style="text-transform:uppercase"  placeholder="Cod Inregistrare" pattern=".{7,7}" />
+                                    <span asp-validation-for="CodInregistrare" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input onkeydown="return /[a-z, ]/i.test(event.key)" asp-for="NumeComplet" type="text" id="typeNameX" class="form-control form-control-lg" placeholder="Nume Complet" style="text-transform:capitalize" />
+                                    <span asp-validation-for="NumeComplet" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Parola" type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Parola" />
+                                    <span asp-validation-for="Parola" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="RepetaParola" type="password" id="typeRePasswordX" class="form-control form-control-lg" placeholder="Repeta Parola"/>
+                                    <span asp-validation-for="RepetaParola" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4 type=">
+                                    <input onkeydown="return !/[a-z]/i.test(event.key)" asp-for="CNP" type="text" id="typeRePasswordX" class="form-control form-control-lg" placeholder="CNP" />
+                                    <span asp-validation-for="CNP" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="SerieBuletin" id="typeRePasswordX" class="form-control form-control-lg" style="text-transform:uppercase" placeholder="Serie Buletin" />
+                                    <span asp-validation-for="SerieBuletin" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Localitate" id="typeRePasswordX" class="form-control form-control-lg" placeholder="Localitate" />
+                                    <span asp-validation-for="Localitate" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Judet" id="typeRePasswordX" class="form-control form-control-lg" placeholder="Judet" />
+                                    <span asp-validation-for="Judet" class="text-danger"></span>
+                                </div>
+                                <button class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" type="submit">Inregistrare</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<style>
+    .cardset {
+        background: rgba(2,84,152,255);
+        border-color: black;
+    }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .my-button {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+
+    }
+
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        text-transform: none;
+    }
+
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        text-transform: none;
+    }
+
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        text-transform: none;
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        text-transform: none;
+    }
+
+    ::placeholder { /* Recent browsers */
+        text-transform: none;
+    }
+</style>

@@ -1,0 +1,82 @@
+﻿@using System.Web
+@using System.Data.Entity;
+@using LicWeb.Data;
+@using System.Diagnostics;
+@section Scripts {
+    <script src="~/js/admin.js"></script>
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Gestioneaza Materii";
+}
+<section class="vh-auto container-fluid d-flex">
+    <nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: rgba(2,84,152,255);">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand fw-bold" style=" color:white">Bun venit, @User.Identity.Name.ToString()</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <a asp-action="AdaugaMaterie" asp-controller="Admin" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-right:10px">Adauga</a>
+                    <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    <a href="../Account/Logout" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<h1 class="text-center " style="padding-top:100px; padding-bottom: 20px;color:rgba(2,84,152,255);">Gestioneaza Materii</h1>
+@foreach (var materie in Model)
+{
+    //nume materie
+    <div class="card mb-3" style="border-color:rgba(2,84,152,255);">
+        <div class="ch card-header" style="color:white">
+            Nume Curs: @materie.CourseName
+        </div>
+        <div class="card-body" style="background-color:rgba(0,143,254,255); color:white">
+            <h5 class="card-title">
+                Profesor Curs: @materie.ProfCursName
+                <hr style="color:black;">
+                Profesor Laborator: @materie.ProfLabName
+            </h5>
+        </div>
+        <div class="cf card-footer d-flex">
+            <form asp-controller="Admin" asp-action="ModificaMaterie" asp-route-id="@materie.Id">
+                <input class="btn btn-primary" type="submit" value="Edit" style="margin-left:15px" />
+            </form>
+        </div>
+    </div>
+}
+<style>
+
+    .cardset {
+    }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .button, .cf, .ch {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+</style>

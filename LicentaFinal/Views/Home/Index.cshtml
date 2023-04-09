@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    @foreach(var obj in Model)
+    {
+        <tr>
+            <td width = "50%">
+                @obj.Id
+            </td>
+            <td width="50%">
+                @obj.NumeComplet
+            </td>
+        </tr>
+    }

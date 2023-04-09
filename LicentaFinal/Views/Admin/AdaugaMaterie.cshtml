@@ -1,0 +1,143 @@
+﻿@using LicWeb.ViewModels
+@model MaterieViewModel
+
+@{
+    ViewData["Title"] = "Adauga Materie";
+}
+<section class="vh-auto container-fluid d-flex">
+    <nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: rgba(2,84,152,255);">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand fw-bold" style=" color:white">Bun venit, @User.Identity.Name.ToString()</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    <a href="../Account/Logout" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<section class="vh-auto">
+    <div class="container">
+        <div class="row d-flex">
+            <form method="post" asp-action="AdaugaMaterie" asp-controller="Admin">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class=" col-12 col-md-8 col-lg-6 col-xl-5 justify-content-center align-content-center align-items-center" style="padding-top:80px;">
+                        <div class="card text-white cardset" style="border-radius: 1rem;">
+
+                            <div class="card-body p-5 text-center">
+                                @if (TempData["Error"] != null)
+                                {
+                                    <div class="col-md-12 alert alert-danger" style="border-color:crimson; margin-top: 0px; border-radius: 1rem;">
+                                        <span><b>Eroare!</b> - @TempData["Error"]</span>
+                                    </div>
+                                }
+                                else if (TempData["Succes"] != null)
+                                {
+                                    <div class="col-md-12 alert alert-success" style="border-color:darkgreen; margin-top: 0px; border-radius: 1rem;">
+                                        <span><b>Succes!</b> - @TempData["Succes"]</span>
+                                    </div>
+                                }
+                                <div class=" mt-md-4">
+                                    <h2 class="fw-bold mb-5 text-uppercase">Adauga Materie</h2>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeNumeMaterie" class="col-form-label float-lg-start fw-bold">Nume Materie</label>
+                                    <input asp-for="NumeMaterie" type="text" id="typeNumeMaterie" class="form-control form-control-lg" placeholder="Nume Materie" />
+                                    <span asp-validation-for="NumeMaterie" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeZiuaSaptamaniiCurs" class="col-form-label float-lg-start fw-bold">Ziua Saptamanii Curs (1 = Luni)</label>
+                                    <input asp-for="ZiuaSaptamaniiCurs" type="text" id="typeZiuaSaptamaniiCurs" class="form-control form-control-lg" placeholder="Ziua Saptamanii Curs" />
+                                    <span asp-validation-for="ZiuaSaptamaniiCurs" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeTimpulZileiCurs" class="col-form-label float-lg-start fw-bold">Ora Incepere Curs</label>
+                                    <input asp-for="StartTimeCurs" type="time" id="typeTimpulZileiCurs" class="form-control form-control-lg" placeholder="Ora Incepere Curs" />
+                                    <span asp-validation-for="StartTimeCurs" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeProfesorCurs" class="col-form-label float-lg-start fw-bold">ID Profesor Curs</label>
+                                    <input asp-for="ProfesorCursId" type="text" id="typeProfesorCurs" class="form-control form-control-lg" placeholder="ID Profesor Curs" />
+                                    <span asp-validation-for="ProfesorCursId" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeZiuaSaptamaniiLab/Seminar" class="col-form-label float-lg-start fw-bold">Ziua Saptamanii Lab/Seminar (1 = Luni)</label>
+                                    <input asp-for="ZiuaSaptamaniiLabSeminar" type="text" id="typeZiuaSaptamaniiLab/Seminar" class="form-control form-control-lg" placeholder="Ziua Saptamanii Lab/Seminar" />
+                                    <span asp-validation-for="ZiuaSaptamaniiLabSeminar" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeTimpulZilei" class="col-form-label float-lg-start fw-bold">Ora Incepere Lab/Seminar</label>
+                                    <input asp-for="StartTimeLabSeminar" type="time" id="typeTimpulZilei" class="form-control form-control-lg" placeholder="Ora Incepere Lab/Seminar" />
+                                    <span asp-validation-for="StartTimeLabSeminar" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeProfesorSeminar" class="col-form-label float-lg-start fw-bold">ID Profesor Lab/Seminar</label>
+                                    <input asp-for="ProfesorSeminarId" type="text" id="typeProfesorSeminar" class="form-control form-control-lg" placeholder="ID Profesor Lab/Seminar" />
+                                    <span asp-validation-for="ProfesorSeminarId" class="text-danger"></span>
+                                </div>
+                                <button class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" style="margin-top:15px" type="submit">Adauga</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<style>
+    .cardset {
+        background: rgba(2,84,152,255);
+        border-color: black;
+    }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .my-button {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+
+    }
+
+    ::-webkit-input-placeholder { /* WebKit browsers */
+        text-transform: none;
+    }
+
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        text-transform: none;
+    }
+
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        text-transform: none;
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        text-transform: none;
+    }
+
+    ::placeholder { /* Recent browsers */
+        text-transform: none;
+    }
+</style>

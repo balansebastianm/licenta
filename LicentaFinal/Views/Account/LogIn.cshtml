@@ -1,0 +1,80 @@
+﻿@using LicWeb.ViewModels
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<section class="vh-auto">
+    <div class="container h-auto">
+        <div class="row d-flex" style="padding-top: 100px">
+
+            <form asp-action="Login" class="row d-flex justify-content-center align-items-center">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://i.ibb.co/7r3YSSs/1-removebg-preview.png"
+                         class="img-fluid" alt="Imagine Universitate">
+                </div>
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5 " style="padding-top: 40px;">
+                    <div class="card text-white cardset" style="border-radius: 1rem;">
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="col-md-12 alert alert-danger" style="border-color:crimson; margin-top: 0px; border-radius: 1rem;">
+                                <span><b>Eroare!</b> - @TempData["Error"]</span>
+                            </div>
+                        }
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                <p class="text-white mb-5">Introdu adresa de email si parola.</p>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Email" type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Adresa Email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Parola" type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="********" />
+                                    <span asp-validation-for="Parola" class="text-danger"></span>
+                                </div>
+
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="forgottenpassword">Ai uitat parola?</a></p>
+
+                                <button class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" type="submit">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<style>
+    .cardset {
+        background: rgba(2,84,152,255);
+        border-color: black;
+    }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .my-button {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+</style>
