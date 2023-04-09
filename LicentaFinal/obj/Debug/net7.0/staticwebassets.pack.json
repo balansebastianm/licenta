@@ -445,6 +445,70 @@
       "PackagePath": "staticwebassets\\pics\\1-removebg-preview.png"
     },
     {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\1918887d-9d6f-4249-9ade-7161bc836bf2.txt",
+      "PackagePath": "staticwebassets\\uploads\\1918887d-9d6f-4249-9ade-7161bc836bf2.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\248ec0b8-e76e-4ac5-bc60-f5e47b1b4209.txt",
+      "PackagePath": "staticwebassets\\uploads\\248ec0b8-e76e-4ac5-bc60-f5e47b1b4209.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\26a2ca9c-abc8-4b50-b84c-2381c0e27586.txt",
+      "PackagePath": "staticwebassets\\uploads\\26a2ca9c-abc8-4b50-b84c-2381c0e27586.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\31755f51-000e-4f8c-b5c0-5723db76aa2c.txt",
+      "PackagePath": "staticwebassets\\uploads\\31755f51-000e-4f8c-b5c0-5723db76aa2c.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\4752ca44-27ea-4d12-acb9-f8cc6659c123.txt",
+      "PackagePath": "staticwebassets\\uploads\\4752ca44-27ea-4d12-acb9-f8cc6659c123.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\4d8ac00f-9e7a-45ee-bea0-ff7cfe50c05b.txt",
+      "PackagePath": "staticwebassets\\uploads\\4d8ac00f-9e7a-45ee-bea0-ff7cfe50c05b.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\58bcd244-1ba3-424e-a237-0b7ed7c738f0.txt",
+      "PackagePath": "staticwebassets\\uploads\\58bcd244-1ba3-424e-a237-0b7ed7c738f0.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\61a4d819-37c1-4f6d-ae81-007013aeeb3e.txt",
+      "PackagePath": "staticwebassets\\uploads\\61a4d819-37c1-4f6d-ae81-007013aeeb3e.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\a29af2c6-2035-473d-af25-d68f334278d5.txt",
+      "PackagePath": "staticwebassets\\uploads\\a29af2c6-2035-473d-af25-d68f334278d5.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\e3930035-2287-40de-ab2d-d38525fd916b.txt",
+      "PackagePath": "staticwebassets\\uploads\\e3930035-2287-40de-ab2d-d38525fd916b.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\e969329c-7d82-44e8-93bd-52c92c856365.txt",
+      "PackagePath": "staticwebassets\\uploads\\e969329c-7d82-44e8-93bd-52c92c856365.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\ed9a62cc-a644-4e71-a5a7-73d1285f56a7.txt",
+      "PackagePath": "staticwebassets\\uploads\\ed9a62cc-a644-4e71-a5a7-73d1285f56a7.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\f0ea73cb-2f9f-4de4-be90-6795ef53d666.txt",
+      "PackagePath": "staticwebassets\\uploads\\f0ea73cb-2f9f-4de4-be90-6795ef53d666.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\ff4ddea5-fcd0-4033-84ee-6975e866258e.txt",
+      "PackagePath": "staticwebassets\\uploads\\ff4ddea5-fcd0-4033-84ee-6975e866258e.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\ffbe75e0-ab74-4484-bf89-40f4843e423a.txt",
+      "PackagePath": "staticwebassets\\uploads\\ffbe75e0-ab74-4484-bf89-40f4843e423a.txt"
+    },
+    {
+      "Id": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\private-key-hfgcjn@gmail.com.pem",
+      "PackagePath": "staticwebassets\\uploads\\private-key-hfgcjn@gmail.com.pem"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.LicWeb.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

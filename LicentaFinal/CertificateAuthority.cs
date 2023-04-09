@@ -215,5 +215,20 @@ namespace LicWeb
                 }
             }
         }
+        public string SignData(string DataToSign, string PathToPrivateKey)
+        {
+
+            AsymmetricCipherKeyPair PerecheChei = null;
+            TextReader ReadPrivatePEM = File.OpenText("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\"+PathToPrivateKey);
+            PerecheChei = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(ReadPrivatePEM).ReadObject();
+            AsymmetricKeyParameter privateKey = PerecheChei.Private;
+            ISigner signer = SignerUtilities.GetSigner("SHA1withRSA");
+            signer.Init(true, privateKey);
+            var bytes = Encoding.UTF8.GetBytes(DataToSign);
+            signer.BlockUpdate(bytes, 0, bytes.Length);
+            byte[] signature = signer.GenerateSignature();
+            var signedString = Convert.ToBase64String(signature);
+            return signedString;
+        }
     }
 }

@@ -19,5 +19,6 @@ namespace LicWeb.Data
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Seminar> Seminars { get; set; }
+        public DbSet<Adeverinta> Adeverinte { get; set; }
     }
 }
