@@ -382,7 +382,15 @@ namespace LicWeb.Controllers
         public async Task<ActionResult> RespingeAdeverinta(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            _adeverintaRepository.Delete(adeverinta);
+            adeverinta.CurrentStatus = -1;
+            _adeverintaRepository.Save();
+            return RedirectToAction("GestioneazaAdeverinte");
+        }
+        [HttpPost]
+        public async Task<ActionResult> AprobaAdeverinta(int id)
+        {
+            var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
+            adeverinta.CurrentStatus = 1;
             _adeverintaRepository.Save();
             return RedirectToAction("GestioneazaAdeverinte");
         }
