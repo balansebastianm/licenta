@@ -21,6 +21,6 @@ namespace LicWeb.Models
         [ForeignKey(nameof(DoctorFamilie))]
         public int DoctorId { get; set; }
         public int Passed { get; set; }
-        public int CurrentStatus { get; set; } //0-trimisa, 1-aprobata de administrator, 2-aprobata de student, -1-respinsa de prof.
+        public int CurrentStatus { get; set; } //0-trimisa, 1-aprobata de administrator, 2-aprobata de student, -1-respinsa de prof, -2-respinsa de student
     }
 }

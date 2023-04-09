@@ -89,14 +89,18 @@ namespace LicWeb.Controllers
                     }
                 }
             }
-            else if (user != null && user.StatusCont == 0 || user.StatusCont == 1)
+            else if (user != null && (user.StatusCont == 0 || user.StatusCont == 1))
             {
                 TempData["Error"] = "Contul nu a fost activat inca.";
                 return View(loginViewModel);
             }
             else if (user != null && user.StatusCont == -1)
-                //Utilizatorul nu a fost gasit
+                //Utilizatorul este blocat
                 TempData["Error"] = "Contul a fost blocat.";
+            else
+            {
+                TempData["Error"] = "Contul nu a fost gasit.";
+            }
             return View(loginViewModel);
         }
         [HttpGet]
