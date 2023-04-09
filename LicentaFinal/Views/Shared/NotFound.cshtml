@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Page Not Found";
+}
+
+<body>
+    <section class="vh-auto container-fluid d-flex">
+        <nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: rgba(2,84,152,255);">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand fw-bold" style=" color:white">Eroare</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </section>
+    <h1 style="padding:100px;">@ViewBag.ErrorMessage</h1>
+</body>
+
+
+
+<style>
+    .cardset {
+        background: rgba(2,84,152,255);
+        border-color: black;
+    }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .button {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+</style>
