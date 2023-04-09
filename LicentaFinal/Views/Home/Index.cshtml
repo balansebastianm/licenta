@@ -1,16 +1,55 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Universitate";
 }
-
-
-    @foreach(var obj in Model)
-    {
-        <tr>
-            <td width = "50%">
-                @obj.Id
-            </td>
-            <td width="50%">
-                @obj.NumeComplet
-            </td>
-        </tr>
+<section class="vh-auto">
+    <div class="container h-auto">
+        <div class="row d-flex" style="padding-top: 100px">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class=" col-12 col-md-8 col-lg-6 col-xl-5 justify-content-center align-content-center align-items-center" style="padding-top:120px;">
+                    <div class="card text-white cardset" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <div class=" mt-md-4">
+                                <h2 class="fw-bold mb-1 text-uppercase" style="padding-bottom:15px">Bun venit!</h2>
+                            </div>
+                            <div class="d-flex flex-column align-items-center">
+                                <a href="Account/LogIn" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" style="margin-bottom:20px; width:310px" type="submit">Logare</a>
+                                <a href="Account/Register" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" style="margin-bottom:20px; width:310px" type="button">Inregistrare</a>
+                                <a href="Account/ForgottenPassword" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" style="margin-bottom:20px; width:310px" type="button">Parola Uitata</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .cardset {
+        background: rgba(2,84,152,255);
+        border-color: black;
     }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .button {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+</style>
