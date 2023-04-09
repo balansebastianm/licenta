@@ -30,6 +30,9 @@ namespace LicWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("EmailStudent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -40,6 +43,9 @@ namespace LicWeb.Migrations
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Passed")
+                        .HasColumnType("int");
 
                     b.Property<string>("PathToAdeverinta")
                         .IsRequired()

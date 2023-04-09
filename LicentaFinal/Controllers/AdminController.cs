@@ -24,6 +24,7 @@ namespace LicWeb.Controllers
         private readonly ICourseRepository _courseRepository;
         private readonly IProfesorRepository _proffessorRepository;
         private readonly ISeminarRepository _seminarRepository;
+        private readonly IAdeverintaRepository _adeverintaRepository;
 
         public AdminController(UserManager<User> userManager,
             IUserRepository userRepository,
@@ -31,7 +32,8 @@ namespace LicWeb.Controllers
             IDoctorRepository doctorRepository,
             ICourseRepository courseRepository,
             ISeminarRepository seminarRepository,
-            IProfesorRepository profesorRepository)
+            IProfesorRepository profesorRepository,
+            IAdeverintaRepository adeverintaRepository)
         {
             this.userManager = userManager;
             this.userRepository = userRepository;
@@ -40,19 +42,19 @@ namespace LicWeb.Controllers
             _courseRepository = courseRepository;
             _seminarRepository = seminarRepository;
             _proffessorRepository = profesorRepository;
+            _adeverintaRepository = adeverintaRepository;
         }
 
-
+        public ActionResult Index()
+        {
+            return View();
+        }
         [HttpGet]
         public IActionResult GestioneazaUtilizatori()
         {
             var users = userManager.Users;
 
             return View(users);
-        }
-        public async Task<IActionResult> Index()
-        {
-            return View();
         }
         public async Task<IActionResult> GestioneazaInregistrari()
         {
@@ -370,6 +372,13 @@ namespace LicWeb.Controllers
                 }
                 return View(invitaViewModel);
             }
+        }
+        public async Task<ActionResult> GestioneazaAdeverinte()
+        {
+            var adeverinte = await _adeverintaRepository.GetAll();
+            
+
+                return View(adeverinte);
         }
     }
 }

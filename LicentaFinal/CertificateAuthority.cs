@@ -18,6 +18,7 @@ using System.Security.Cryptography.Pkcs;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
+using System.IO;
 
 namespace LicWeb
 {
@@ -219,16 +220,32 @@ namespace LicWeb
         {
 
             AsymmetricCipherKeyPair PerecheChei = null;
-            TextReader ReadPrivatePEM = File.OpenText("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\"+PathToPrivateKey);
+            TextReader ReadPrivatePEM = File.OpenText(("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + PathToPrivateKey));
             PerecheChei = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(ReadPrivatePEM).ReadObject();
             AsymmetricKeyParameter privateKey = PerecheChei.Private;
             ISigner signer = SignerUtilities.GetSigner("SHA1withRSA");
             signer.Init(true, privateKey);
-            var bytes = Encoding.UTF8.GetBytes(DataToSign);
+            byte[] bytes = File.ReadAllBytes("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + DataToSign);
             signer.BlockUpdate(bytes, 0, bytes.Length);
             byte[] signature = signer.GenerateSignature();
             var signedString = Convert.ToBase64String(signature);
             return signedString;
+
+        }
+        public bool VerifySignature(string PublicKey, string Signature, string pathToAdeverinta)
+        {
+            byte[] BytesToSign = File.ReadAllBytes("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + pathToAdeverinta);
+            byte[] ExpectedSignatureBytes = Convert.FromBase64String(Signature);
+            string adaptedPK = "-----BEGIN PUBLIC KEY-----" + PublicKey + "-----END PUBLIC KEY-----";
+            StringReader publicKeyReader = new StringReader(adaptedPK);
+            Org.BouncyCastle.OpenSsl.PemReader pemReader = new Org.BouncyCastle.OpenSsl.PemReader(publicKeyReader);
+            AsymmetricKeyParameter publicKey = (AsymmetricKeyParameter)pemReader.ReadObject();
+
+            ISigner signer = SignerUtilities.GetSigner("SHA1withRSA");
+            signer.Init(false, publicKey);
+            signer.BlockUpdate(BytesToSign, 0, BytesToSign.Length);
+            return signer.VerifySignature(ExpectedSignatureBytes);
+
         }
     }
 }

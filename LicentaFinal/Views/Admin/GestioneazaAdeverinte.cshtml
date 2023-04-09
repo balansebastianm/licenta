@@ -1,0 +1,123 @@
+﻿@using LicWeb.Interfaces;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Gestioneaza Adeverinte";
+}
+@section Scripts {
+    <script src="~/js/AdminReg.js"></script>
+}
+<section class="vh-auto container-fluid d-flex">
+    <nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: rgba(2,84,152,255);">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand fw-bold" style=" color:white">Bun venit, @User.Identity.Name.ToString()</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    <a href="../Account/Logout" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<h1 class="text-center " style="padding-top:100px; padding-bottom: 20px;color:rgba(2,84,152,255);">Lista Utilizatori</h1>
+@foreach (var adeverinta in Model)
+{
+
+    <div class="card mb-3" style="border-color:rgba(2,84,152,255);">
+        <div class="ch card-header" style="color:white; display:flex;">
+            ID Adeverinta : @adeverinta.Id
+            @{
+                if (adeverinta.Passed == 1)
+                {
+                    <div runat="server" id="StatusGood" style="margin-left: 20px; background-color:#6ba840; display:flex; align-content:center; height:25px; width:auto; gap:5px; padding-right:10px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-check" viewBox="0 0 16 16">
+                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                        </svg>
+                        <p>Signature Matches</p>
+                    </div>
+                }
+                else
+                {
+                    <div runat="server" id="status-bad" style="margin-left: 20px; background-color:#803742; display:flex; align-content:center; height:25px; width:auto; gap:5px; padding-right:10px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-x" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                        <p>Signature does not match!</p>
+                    </div>
+                }
+            }
+
+
+        </div>
+        <div class="card-body" style="background-color:rgba(0,143,254,255); color:white">
+            <h5 class="card-title">
+                @adeverinta.EmailStudent
+
+            </h5>
+
+        </div>
+        <div class="cf card-footer d-flex">
+            <form method="post" asp-action="AprobaAdeverinta" asp-controller="Admin" asp-route-id="@adeverinta.Id">
+                <span id="confirmAllowSpan_@adeverinta.Id" style="display:none">
+                    <span style="margin-left:15px; margin-right:7px; color:white">Esti sigur ca vrei sa accepti acest utilizator?</span>
+                    <button type="submit" class="btn btn-danger" style="margin-right:7px">Da</button>
+                    <a class="btn btn-primary" onclick="confirmAllow('@adeverinta.Id', false)">Nu</a>
+                </span>
+                <span id="AllowSpan_@adeverinta.Id">
+                    <a class="btn btn-danger" style="margin-left:15px;"
+                   onclick="confirmAllow('@adeverinta.Id', true)">Aproba</a>
+
+                </span>
+            </form>
+            <form method="post" asp-action="RespingeAdeverinta" asp-controller="Admin" asp-route-id="@adeverinta.Id">
+                <span id="confirmDenySpan_@adeverinta.Id" style="display:none">
+                    <span style="margin-left:15px; margin-right:7px; color:white">Esti sigur ca vrei sa respingi acest utilizator?</span>
+                    <button type="submit" class="btn btn-danger" style="margin-right:7px">Da</button>
+                    <a class="btn btn-primary" onclick="confirmDeny('@adeverinta.Id', false)">Nu</a>
+                </span>
+                <span id="DenySpan_@adeverinta.Id">
+                    <a class="btn btn-danger" style="margin-left:15px;"
+                   onclick="confirmDeny('@adeverinta.Id', true)">Respinge</a>
+                </span>
+            </form>
+        </div>
+    </div>
+
+
+}
+<style>
+
+    .cardset {
+    }
+
+    body {
+        background: rgb(237,237,237);
+        background: linear-gradient(90deg, rgba(237,237,237,1) 0%, rgba(0,212,255,1) 59%, rgba(12,18,196,0.850577731092437) 100%);
+    }
+
+    .btn-raised {
+        transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5)
+    }
+
+        .btn-raised:not([disabled]):active,
+        .btn-raised:not([disabled]):focus,
+        .btn-raised:not([disabled]):hover {
+            box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 1);
+            transform: translate3d(0, -3px, 0);
+            background-color: rgba(0,143,254,255);
+            border-color: rgba(2,84,152,255);
+        }
+
+    .button, .cf, .ch {
+        background-color: rgba(2,84,152,255);
+        border-color: rgba(0,143,254,255);
+    }
+</style>

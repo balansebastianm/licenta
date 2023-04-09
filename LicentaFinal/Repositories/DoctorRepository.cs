@@ -8,6 +8,8 @@ namespace LicWeb.Repositories
     public class DoctorRepository : IDoctorRepository
     {
         private readonly ApplicationDbContext _context;
+
+
         public DoctorRepository(ApplicationDbContext context)
         {
             _context = context;
@@ -35,6 +37,11 @@ namespace LicWeb.Repositories
             return await _context.DoctoriFamilie.FirstOrDefaultAsync(i => i.Id == id);
         }
 
+        public DoctorFamilie GetByUID(string Id)
+        {
+            return _context.DoctoriFamilie.FirstOrDefault(b => b.DoctorUserId == Id);
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
@@ -46,5 +53,6 @@ namespace LicWeb.Repositories
             _context.Update(doctorFamilie);
             return Save();
         }
+        
     }
 }

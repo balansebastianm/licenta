@@ -8,6 +8,22 @@
 
 @using LicWeb.ViewModels
 @model AdeverintaViewModel
+<section class="vh-auto container-fluid d-flex">
+    <nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: rgba(2,84,152,255);">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand fw-bold" style=" color:white">Bun venit, @User.Identity.Name.ToString()</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    <a href="../Account/Logout" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
 <section class="vh-auto">
     <div class="container-fluid h-auto">
         <div class="row d-flex" style="padding-top: 100px">

@@ -17,7 +17,6 @@ builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<ISeminarRepository, SeminarRepository>();
 builder.Services.AddScoped<IAdeverintaRepository, AdeverintaRepository>();
-builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

@@ -10,5 +10,6 @@ namespace LicWeb.Interfaces
         bool Update(DoctorFamilie doctorFamilie);
         bool Delete(DoctorFamilie doctorFamilie);
         bool Save();
+        DoctorFamilie GetByUID(string Id);
     }
 }

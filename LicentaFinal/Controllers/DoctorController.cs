@@ -1,23 +1,40 @@
-﻿using LicWeb.Interfaces;
+﻿using LicWeb.Data;
+using LicWeb.Interfaces;
 using LicWeb.Models;
+using LicWeb.Repositories;
 using LicWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace LicWeb.Controllers
 {
     [Authorize(Roles = "doctor")]
+    
     public class DoctorController : Controller
     {
+        private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment Environment;
         private readonly IAdeverintaRepository _adeverintaRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly UserManager<User> _userManager;
+        private readonly IDoctorRepository _doctorRepository;
         public DoctorController(IWebHostEnvironment environment
-            ,IAdeverintaRepository adeverintaRepository)
+            ,IAdeverintaRepository adeverintaRepository,
+            IUserRepository userRepository,
+            UserManager<User> userManager,
+            IDoctorRepository doctorRepository, 
+            ApplicationDbContext context)
         {
             Environment = environment;
             _adeverintaRepository = adeverintaRepository;
+            _userRepository = userRepository;
+            _userManager = userManager;
+            _doctorRepository = doctorRepository;
+            _context = context;
         }
         [HttpGet]
         public IActionResult Index()
@@ -40,7 +57,7 @@ namespace LicWeb.Controllers
 
                 var PKEY = adeverintaViewModel.CheiePrivata;
                 List<string> uploadedPKEY = new List<string>();
-                string PKEYFileName = $@"{Guid.NewGuid()}.txt"; ;
+                string PKEYFileName = $@"{Guid.NewGuid()}.pem"; ;
                 using (FileStream stream = new FileStream(Path.Combine(path, PKEYFileName), FileMode.Create))
                 {
                     PKEY.CopyTo(stream);
@@ -60,13 +77,30 @@ namespace LicWeb.Controllers
                 }
                 CertificateAuthority CA = new CertificateAuthority();
                 string signature = CA.SignData(adeverintaFileName, PKEYFileName);
+                _userManager.GetUserAsync(HttpContext.User);
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                Debug.WriteLine("USER ID:" + userId);
+                var DocId = _doctorRepository.GetByUID(userId);
+                Debug.WriteLine("DOCTOR ID:" + DocId.Id);
+                int passed;
+                var getPath = _context.Adeverinte.FirstOrDefault(b => b.DoctorId == DocId.Id);
+                string pathToAdeverinta = getPath.PathToAdeverinta;
+                if (CA.VerifySignature(DocId.CheiePublica, signature, pathToAdeverinta)){
+                    passed = 1;
+                }
+                else
+                {
+                    passed = 0;
+                }
                 var adeverintaToDb = new Adeverinta()
                 {
                     EncryptedData = signature,
                     PathToAdeverinta = adeverintaFileName,
                     EmailStudent = adeverintaViewModel.EmailStudent,
                     StartDate = adeverintaViewModel.MotivareDin,
-                    EndDate = adeverintaViewModel.MotivarePana
+                    EndDate = adeverintaViewModel.MotivarePana,
+                    DoctorId = DocId.Id,
+                    Passed = passed
                 };
                 _adeverintaRepository.Add(adeverintaToDb);
                 _adeverintaRepository.Save();
