@@ -3,7 +3,7 @@ namespace LicWeb
 {
     public class MailManager
     {
-        private string EmailAddress, Title, TextBody, SenderName, SenderSurname, ReceiverName, ReceiverSurname, RegistrationCode, MotivRespingere, PrivateKeyPath, PublicKeyPath, CertificatePath;
+        private string EmailAddress, Title, TextBody, SenderName, SenderSurname, ReceiverName, ReceiverSurname, RegistrationCode;
         public void SendMail(string EmailAddress, string Title, string TextBody, string RegistrationCode, string SenderName, string SenderSurname, string ReceiverName, string ReceiverSurname)
         {
             this.EmailAddress = EmailAddress;

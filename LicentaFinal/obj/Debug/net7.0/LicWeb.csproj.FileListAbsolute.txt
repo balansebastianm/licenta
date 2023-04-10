@@ -345,8 +345,6 @@ C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.Owin.dll
-C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\MimeKit.dll
@@ -354,7 +352,6 @@ C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Mono.TextT
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\NToastNotify.dll
-C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Owin.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\BouncyCastle.Crypto.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
@@ -423,3 +420,6 @@ C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\obj\Debug\net7.0\scopedcss\
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\obj\Debug\net7.0\LicWeb.csproj.CopyComplete
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\obj\Debug\net7.0\LicWeb.genruntimeconfig.cache
 C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\obj\Debug\net7.0\ref\LicWeb.dll
+C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.Owin.dll
+C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Sebi\source\repos\LicentaFinal\LicentaFinal\bin\Debug\net7.0\Owin.dll

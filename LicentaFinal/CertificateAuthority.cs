@@ -58,13 +58,15 @@ namespace LicWeb
             //valori CSR
             string x509 = "CN=" + Email + ", O=Doctori Familie, L=" + Localitate + ", ST=" + Judet + ". C=RO";
             var subject = new X509Name(x509);
+#pragma warning disable CS0618 // Type or member is obsolete
             var csr = new Pkcs10CertificationRequest(
             new Asn1SignatureFactory("SHA256withRSA", keyPair.Private),
             subject,
             keyPair.Public,
             null,
             keyPair.Private);
-            //scriem CSR-ul
+#pragma warning restore CS0618 // Type or member is obsolete
+                              //scriem CSR-ul
             var csrPem = new StringBuilder();
             var csrPemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(new StringWriter(csrPem));
             csrPemWriter.WriteObject(csr);
@@ -139,7 +141,7 @@ namespace LicWeb
             //importam certificatul de la autoritate
             ISignatureFactory signatureFactory;
 
-            AsymmetricCipherKeyPair PerecheChei = null;
+            AsymmetricCipherKeyPair? PerecheChei = null;
             TextReader ReadPrivatePEM = File.OpenText("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Root Cert\\RootCert-private.pem");
             PerecheChei = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(ReadPrivatePEM).ReadObject();
             AsymmetricKeyParameter privateKey = PerecheChei.Private;
@@ -219,7 +221,7 @@ namespace LicWeb
         public string SignData(string DataToSign, string PathToPrivateKey)
         {
 
-            AsymmetricCipherKeyPair PerecheChei = null;
+            AsymmetricCipherKeyPair? PerecheChei = null;
             TextReader ReadPrivatePEM = File.OpenText(("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + PathToPrivateKey));
             PerecheChei = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(ReadPrivatePEM).ReadObject();
             AsymmetricKeyParameter privateKey = PerecheChei.Private;

@@ -4,7 +4,7 @@ using System.Net;
 
 namespace LicWeb.Data
 {
-    public class seed
+    public class Seed
     {
         public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
         {

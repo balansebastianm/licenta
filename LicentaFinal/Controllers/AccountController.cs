@@ -40,11 +40,14 @@ namespace LicWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> Login()
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (User.Identity.IsAuthenticated)
             {
                 Debug.WriteLine(User.Identity.Name);
+#pragma warning disable CS8604 // Possible null reference argument.
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var res2 = await _userManager.GetRolesAsync(user);
+#pragma warning restore CS8604 // Possible null reference argument.
                 string role = string.Join(", ", res2);
                 if (role == "profesor")
                     return RedirectToAction("Index", "Profesor");
@@ -55,6 +58,7 @@ namespace LicWeb.Controllers
                 else if (role == "doctor")
                     return RedirectToAction("Index", "Doctor");
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             var response = new LoginViewModel();
             return View(response);
         }
@@ -86,7 +90,9 @@ namespace LicWeb.Controllers
                             return RedirectToAction("Index", "Student");
                         else if (role == "doctor")
                             return RedirectToAction("Index", "Doctor");
+#pragma warning disable CS8604 // Possible null reference argument.
                         UserName = user.Email;
+#pragma warning restore CS8604 // Possible null reference argument.
                     }
                 }
             }
@@ -109,8 +115,10 @@ namespace LicWeb.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+#pragma warning disable CS8604 // Possible null reference argument.
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var res2 = await _userManager.GetRolesAsync(user);
+#pragma warning restore CS8604 // Possible null reference argument.
                 string role = string.Join(", ", res2);
                 if (role == "profesor")
                     return RedirectToAction("Index", "Profesor");
@@ -155,10 +163,13 @@ namespace LicWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
+#pragma warning disable CS8604 // Possible null reference argument.
+
             if (User.Identity.IsAuthenticated)
             {
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var res2 = await _userManager.GetRolesAsync(user);
+#pragma warning restore CS8604 // Possible null reference argument.
                 string role = string.Join(", ", res2);
                 if (role == "profesor")
                     return RedirectToAction("Index", "Profesor");
