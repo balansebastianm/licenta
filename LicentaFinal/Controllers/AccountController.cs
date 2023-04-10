@@ -42,6 +42,7 @@ namespace LicWeb.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                Debug.WriteLine(User.Identity.Name);
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var res2 = await _userManager.GetRolesAsync(user);
                 string role = string.Join(", ", res2);

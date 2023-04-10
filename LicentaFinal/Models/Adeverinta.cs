@@ -10,7 +10,7 @@ namespace LicWeb.Models
         [Required]
         public string EncryptedData { get; set; }
         [Required]
-        public string EmailStudent { get; set; }
+        public string IdStudent { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
         [Required]

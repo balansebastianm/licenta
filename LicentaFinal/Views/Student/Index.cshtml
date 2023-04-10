@@ -1,4 +1,6 @@
-﻿@*
+﻿@using System.Security.Claims;
+@using System.Diagnostics;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -28,11 +30,14 @@
 <h1 class="text-center " style="padding-top:100px; padding-bottom: 20px;color:rgba(2,84,152,255);">Gestioneaza Adeverinte</h1>
 @foreach (var adeverinta in Model)
 {
-    if (adeverinta.CurrentStatus == 1)
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    var userName = User.FindFirstValue(ClaimTypes.Name);
+    Debug.WriteLine(userId);
+    if (adeverinta.CurrentStatus == 1 && adeverinta.IdStudent == userId)
     {
         <div class="card mb-3" style="border-color:rgba(2,84,152,255);">
             <div class="ch card-header" style="color:white; display:flex;">
-                Email Adeverinta : @adeverinta.EmailStudent
+                Email Adeverinta : @adeverinta.IdStudent
                 @{
                     if (adeverinta.Passed == 1)
                     {

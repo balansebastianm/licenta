@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "R2nefcZBU1YBlozfMwMt49NH7ubcWCuo0gzK6Uccgvc=",
+  "Hash": "Ouw1N7vNZDxS/3FBOffS7z731pc4D5W5iHwEPpvC2k8=",
   "Source": "LicWeb",
   "BasePath": "_content/LicWeb",
   "Mode": "Default",
@@ -2601,6 +2601,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6847bca2-c48a-4e56-91d3-ea38fbc24f25.pem"
     },
     {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\6b6073ae-4e08-43f6-987e-e80fad2d7965.pdf",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/6b6073ae-4e08-43f6-987e-e80fad2d7965.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\6b6073ae-4e08-43f6-987e-e80fad2d7965.pdf"
+    },
+    {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\6d608158-cebd-4390-bec9-0a9e8d3a2611.pem",
       "SourceId": "LicWeb",
       "SourceType": "Discovered",
@@ -2803,6 +2820,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\9850654e-d099-4fa0-a9ce-80539641fd7f.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\9882f16b-c394-4ee2-8eb6-fdf1e5813758.pem",
+      "SourceId": "LicWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\",
+      "BasePath": "_content/LicWeb",
+      "RelativePath": "uploads/9882f16b-c394-4ee2-8eb6-fdf1e5813758.pem",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\9882f16b-c394-4ee2-8eb6-fdf1e5813758.pem"
     },
     {
       "Identity": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\9f1598fa-e879-4d33-8cbb-983e01695527.txt",

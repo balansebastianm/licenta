@@ -52,5 +52,12 @@ namespace LicWeb.Repositories
             string UserId = query.Select(x => x.Id).ToList().FirstOrDefault();
             return UserId;
         }
+
+        public string GetIdByEmail(string email)
+        {
+            var query = _context.Users.Where(b => b.Email == email).ToList();
+            string UserId = query.Select(x => x.Id).ToList().FirstOrDefault();
+            return UserId;
+        }
     }
 }

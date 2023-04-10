@@ -84,6 +84,7 @@ namespace LicWeb.Controllers
                 Debug.WriteLine("DOCTOR ID:" + DocId.Id);
                 int passed;
                 var getPath = _context.Adeverinte.FirstOrDefault(b => b.DoctorId == DocId.Id);
+                var getStudentId = _userRepository.GetIdByEmail(adeverintaViewModel.EmailStudent);
                 if (CA.VerifySignature(DocId.CheiePublica, signature, adeverintaFileName))
                 {
                     passed = 1;
@@ -96,7 +97,7 @@ namespace LicWeb.Controllers
                 {
                     EncryptedData = signature,
                     PathToAdeverinta = adeverintaFileName,
-                    EmailStudent = adeverintaViewModel.EmailStudent,
+                    IdStudent = getStudentId,
                     StartDate = adeverintaViewModel.MotivareDin,
                     EndDate = adeverintaViewModel.MotivarePana,
                     DoctorId = DocId.Id,
