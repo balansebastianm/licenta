@@ -10,5 +10,6 @@ namespace LicWeb.Interfaces
         bool Update(Student student);
         bool Delete(Student student);
         bool Save();
+        int GetIdByUID(string uid);
     }
 }

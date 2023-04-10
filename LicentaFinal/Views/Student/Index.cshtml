@@ -32,12 +32,11 @@
 {
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     var userName = User.FindFirstValue(ClaimTypes.Name);
-    Debug.WriteLine(userId);
     if (adeverinta.CurrentStatus == 1 && adeverinta.IdStudent == userId)
     {
         <div class="card mb-3" style="border-color:rgba(2,84,152,255);">
             <div class="ch card-header" style="color:white; display:flex;">
-                Email Adeverinta : @adeverinta.IdStudent
+                Id Adeverinta : @adeverinta.Id
                 @{
                     if (adeverinta.Passed == 1)
                     {

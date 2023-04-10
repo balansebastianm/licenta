@@ -34,6 +34,13 @@ namespace LicWeb.Repositories
             return await _context.Studenti.FirstOrDefaultAsync(i => i.Id == id);
         }
 
+        public int GetIdByUID(string uid)
+        {
+            var query = _context.Studenti.Where(b => b.StudentUserId == uid).ToList();
+            int StudentId = query.Select(x => x.Id).ToList().FirstOrDefault();
+            return StudentId;
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
