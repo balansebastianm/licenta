@@ -68,7 +68,7 @@ namespace LicWeb.Controllers
         public async Task<IActionResult> Download(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            var path = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
+            var path = "D:\\licenta\\LicentaFinal\\wwwroot\\" + adeverinta.PathToAdeverinta;
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
             {

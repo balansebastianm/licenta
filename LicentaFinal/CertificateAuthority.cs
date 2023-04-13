@@ -71,7 +71,7 @@ namespace LicWeb
             var csrPemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(new StringWriter(csrPem));
             csrPemWriter.WriteObject(csr);
             csrPemWriter.Writer.Flush();
-            string FileToWriteTo = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\" + Email + ".csr";
+            string FileToWriteTo = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\" + Email + ".csr";
             using (TextWriter textWriter = new StreamWriter(FileToWriteTo, false))
             {
                 textWriter.Write(RemovePemHeaderFooter(csrPem.ToString()));
@@ -88,8 +88,8 @@ namespace LicWeb
                 var keyPair = GenerateKeyPair();
                 var keyPem = new StringBuilder();
                 var keyPemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(new StringWriter(keyPem));
-                string PublicPEMFile = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\public-key-" + Email +".pem";
-                string PrivatePEMFile = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\private-key-" + Email + ".pem";
+                string PublicPEMFile = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + Email +".pem";
+                string PrivatePEMFile = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\private-key-" + Email + ".pem";
                 //scriem cheia publica
                 using (TextWriter textWriter = new StreamWriter(PublicPEMFile, false))
                 {
@@ -122,7 +122,7 @@ namespace LicWeb
         }
         public void GenerateCertFromCSR(string Email)
         {
-            string CSRPath = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\" + Email + ".csr";
+            string CSRPath = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\" + Email + ".csr";
             char[] caractere = File.ReadAllText(CSRPath).ToCharArray();
 
             //citim request-ul;
@@ -142,10 +142,10 @@ namespace LicWeb
             ISignatureFactory signatureFactory;
 
             AsymmetricCipherKeyPair? PerecheChei = null;
-            TextReader ReadPrivatePEM = File.OpenText("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Root Cert\\RootCert-private.pem");
+            TextReader ReadPrivatePEM = File.OpenText("D:\\licenta\\LicentaFinal\\Root Cert\\RootCert-private.pem");
             PerecheChei = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(ReadPrivatePEM).ReadObject();
             AsymmetricKeyParameter privateKey = PerecheChei.Private;
-            byte[] issuer = File.ReadAllBytes("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Root Cert\\RootCert.der");
+            byte[] issuer = File.ReadAllBytes("D:\\licenta\\LicentaFinal\\Root Cert\\RootCert.der");
             //deschidem certificatul issuer
             var issuerCertificate = new Org.BouncyCastle.X509.X509Certificate(issuer);
             var authorityKeyIdentifier = new AuthorityKeyIdentifierStructure(issuerCertificate);
@@ -172,7 +172,7 @@ namespace LicWeb
                 X509Extensions.AuthorityKeyIdentifier.Id, false, authorityKeyIdentifier);
             Org.BouncyCastle.X509.X509Certificate cert = certificateGenerator.Generate(signatureFactory);
             //scriem certificatul
-            string PathToCert = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\certificat-" + Email + ".der";
+            string PathToCert = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + Email + ".der";
             using (var TextWriter = File.OpenWrite(PathToCert))
             {
                 var buffer = cert.GetEncoded();
@@ -191,7 +191,7 @@ namespace LicWeb
         public string GetPkeyRegister(string Email)
         {
             //deschidem cheia publica a utilizatorului
-            string PK = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\" + "public-key-" + Email + ".pem";
+            string PK = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\" + "public-key-" + Email + ".pem";
             Org.BouncyCastle.OpenSsl.PemReader pemReader;
             using (StreamReader reader = new StreamReader(PK))
             {
@@ -222,12 +222,12 @@ namespace LicWeb
         {
 
             AsymmetricCipherKeyPair? PerecheChei = null;
-            TextReader ReadPrivatePEM = File.OpenText(("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + PathToPrivateKey));
+            TextReader ReadPrivatePEM = File.OpenText(("D:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + PathToPrivateKey));
             PerecheChei = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(ReadPrivatePEM).ReadObject();
             AsymmetricKeyParameter privateKey = PerecheChei.Private;
             ISigner signer = SignerUtilities.GetSigner("SHA1withRSA");
             signer.Init(true, privateKey);
-            byte[] bytes = File.ReadAllBytes("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + DataToSign);
+            byte[] bytes = File.ReadAllBytes("D:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + DataToSign);
             signer.BlockUpdate(bytes, 0, bytes.Length);
             byte[] signature = signer.GenerateSignature();
             var signedString = Convert.ToBase64String(signature);
@@ -239,7 +239,7 @@ namespace LicWeb
             Debug.WriteLine(PublicKey);
             Debug.WriteLine(Signature);
             Debug.WriteLine(pathToAdeverinta);
-            byte[] BytesToSign = File.ReadAllBytes("C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + pathToAdeverinta);
+            byte[] BytesToSign = File.ReadAllBytes("D:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + pathToAdeverinta);
             byte[] ExpectedSignatureBytes = Convert.FromBase64String(Signature);
             string adaptedPK = "-----BEGIN PUBLIC KEY-----" + PublicKey + "-----END PUBLIC KEY-----";
             StringReader publicKeyReader = new StringReader(adaptedPK);

@@ -191,10 +191,10 @@ namespace LicWeb.Controllers
                     "Sistem",
                     "Utilizator",
                     "Invitat");
-                string PathToPrivateKey = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\private-key-" + user.Email + ".pem";
-                string PathToPublicKey = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\public-key-" + user.Email + ".pem";
-                string PathToCertificate = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\certificat-" + user.Email + ".der";
-                string PathToCSR = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\certificat-" + user.Email + ".csr";
+                string PathToPrivateKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\private-key-" + user.Email + ".pem";
+                string PathToPublicKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + user.Email + ".pem";
+                string PathToCertificate = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".der";
+                string PathToCSR = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".csr";
                 System.IO.File.Delete(PathToPrivateKey);
                 System.IO.File.Delete(PathToPublicKey);
                 System.IO.File.Delete(PathToCertificate);
@@ -218,11 +218,11 @@ namespace LicWeb.Controllers
 
 
                 MailManager m = new MailManager();
-                string PathToPrivateKey = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\private-key-" + user.Email + ".pem";
-                string PathToPublicKey = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\public-key-" + user.Email + ".pem";
-                string PathToCertificate = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\certificat-" + user.Email + ".der";
-                string PathToCSR = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Certificate Requests\\" + user.Email + ".csr";
-                string MoveCertificate = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\Valid Certificates\\certificat-" + user.Email + ".der";
+                string PathToPrivateKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\private-key-" + user.Email + ".pem";
+                string PathToPublicKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + user.Email + ".pem";
+                string PathToCertificate = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".der";
+                string PathToCSR = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\" + user.Email + ".csr";
+                string MoveCertificate = "D:\\licenta\\LicentaFinal\\Valid Certificates\\certificat-" + user.Email + ".der";
                 m.SendMail(user.Email,
                 "Inregistrare Platforma",
                 "Cererea dumneavoastra de inregistrare a fost aprobata. Certificatul si perechea de chei au fost atasate.\n",
@@ -397,7 +397,7 @@ namespace LicWeb.Controllers
         public async Task<IActionResult> Download(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            var path = "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
+            var path = "D:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
             {

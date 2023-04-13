@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Certificate Requests\" />
     <Folder Include="Views\ForgottenPassword\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>

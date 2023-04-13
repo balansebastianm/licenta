@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\LicWeb.csproj": {}
+    "D:\\licenta\\LicentaFinal\\LicWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\LicWeb.csproj": {
+    "D:\\licenta\\LicentaFinal\\LicWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\LicWeb.csproj",
+        "projectUniqueName": "D:\\licenta\\LicentaFinal\\LicWeb.csproj",
         "projectName": "LicWeb",
-        "projectPath": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\LicWeb.csproj",
+        "projectPath": "D:\\licenta\\LicentaFinal\\LicWeb.csproj",
         "packagesPath": "C:\\Users\\Sebi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sebi\\source\\repos\\LicentaFinal\\LicentaFinal\\obj\\",
+        "outputPath": "D:\\licenta\\LicentaFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sebi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -110,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
