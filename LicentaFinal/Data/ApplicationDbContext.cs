@@ -10,17 +10,20 @@ namespace LicWeb.Data
         {
 
         }
-        public DbSet<DoctorFamilie> DoctoriFamilie { get; set; }
+        public DbSet<Doctor> Doctori { get; set; }
         public DbSet<Profesor> Profesori { get; set; }
         public DbSet<Student> Studenti { get; set; }
 #pragma warning disable CS0114 // Member hides inherited member; missing override keyword
         public DbSet<User> Users { get; set; }
 #pragma warning restore CS0114 // Member hides inherited member; missing override keyword
-        public DbSet<Grade> Grades { get; set; }
-        public DbSet<Attendance> Attendances { get; set; }
-        public DbSet<Enrollment> Enrollments { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Seminar> Seminars { get; set; }
+        public DbSet<SituatieFinala> SituatiiFinale { get; set; }
+        public DbSet<Prezenta> Prezente { get; set; }
+        public DbSet<Materie> Materii { get; set; }
         public DbSet<Adeverinta> Adeverinte { get; set; }
+        public DbSet<Cheie> Chei { get; set; }
+        public DbSet<Orar> Oraruri { get; set; }
+        public DbSet<Specializare> Specializari { get; set; }
+        public DbSet<Modul> Moduluri { get; set; }
+
     }
 }

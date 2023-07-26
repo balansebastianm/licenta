@@ -52,5 +52,11 @@ namespace LicWeb.Repositories
             string ProfUserId = query.Select(x => x.ProfesorUserId).ToList().FirstOrDefault();
             return ProfUserId;
         }
+        public async Task<Profesor> GetByUID(string id)
+        {
+
+            return await _context.Profesori.SingleOrDefaultAsync(x => x.ProfesorUserId == id);
+        }
+
     }
 }

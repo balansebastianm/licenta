@@ -17,7 +17,7 @@ namespace LicWeb.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,24 +33,29 @@ namespace LicWeb.Migrations
                     b.Property<int>("CurrentStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EncryptedData")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DataConsultatie")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdDoctor")
+                        .HasColumnType("int");
+
                     b.Property<string>("IdStudent")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PathToAdeverinta")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Passed")
-                        .HasColumnType("int");
+                    b.Property<string>("SemnaturaDoctor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PathToAdeverinta")
+                    b.Property<string>("SemnaturaUniversitate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -62,57 +67,7 @@ namespace LicWeb.Migrations
                     b.ToTable("Adeverinte");
                 });
 
-            modelBuilder.Entity("LicWeb.Models.Attendance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("AttendanceDateTime")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EnrollmentId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("Present")
-                        .IsRequired()
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Attendances");
-                });
-
-            modelBuilder.Entity("LicWeb.Models.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CourseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DayOfWeek")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProfesorCursId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("TimeOfDay")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("LicWeb.Models.DoctorFamilie", b =>
+            modelBuilder.Entity("LicWeb.Models.Cheie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,17 +79,44 @@ namespace LicWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Chei");
+                });
+
+            modelBuilder.Entity("LicWeb.Models.Doctor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("DoctorUserId")
                         .IsRequired()
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("IdCheiePublica")
+                        .HasMaxLength(450)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Parafa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("DoctoriFamilie");
+                    b.ToTable("Doctori");
                 });
 
-            modelBuilder.Entity("LicWeb.Models.Enrollment", b =>
+            modelBuilder.Entity("LicWeb.Models.Materie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -142,24 +124,40 @@ namespace LicWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("AnStudii")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Passed")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("SeminarId")
+                    b.Property<int>("IdProfCurs")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int>("IdProfSeminar")
                         .HasColumnType("int");
+
+                    b.Property<int>("IdSpecializare")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModulStudii")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NrCredite")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumeMaterie")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("ProcentajPrezentaCurs")
+                        .HasColumnType("real");
+
+                    b.Property<float>("ProcentajPrezentaSeminar")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Enrollments");
+                    b.ToTable("Materii");
                 });
 
-            modelBuilder.Entity("LicWeb.Models.Grade", b =>
+            modelBuilder.Entity("LicWeb.Models.Modul", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -167,18 +165,111 @@ namespace LicWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EnrollmentId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<float?>("GradeCurs")
-                        .HasColumnType("real");
-
-                    b.Property<float?>("GradeSeminar")
-                        .HasColumnType("real");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Grades");
+                    b.ToTable("Moduluri");
+                });
+
+            modelBuilder.Entity("LicWeb.Models.Orar", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FinalCurs")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FinalSeminar")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdMaterie")
+                        .HasMaxLength(450)
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InceputCurs")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("InceputSeminar")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ZiCurs")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ZiSeminar")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Oraruri");
+                });
+
+            modelBuilder.Entity("LicWeb.Models.Prezenta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdMaterie")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdStudent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C4")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C5")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C6")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_C7")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S4")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S5")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S6")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Prezenta_S7")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Prezente");
                 });
 
             modelBuilder.Entity("LicWeb.Models.Profesor", b =>
@@ -189,10 +280,8 @@ namespace LicWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Functie")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MateriiPredate")
+                    b.Property<string>("Nomenclatura")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfesorUserId")
@@ -205,7 +294,7 @@ namespace LicWeb.Migrations
                     b.ToTable("Profesori");
                 });
 
-            modelBuilder.Entity("LicWeb.Models.Seminar", b =>
+            modelBuilder.Entity("LicWeb.Models.SituatieFinala", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -213,21 +302,51 @@ namespace LicWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DayOfWeek")
+                    b.Property<int>("EsteRestant")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCursAsociat")
+                    b.Property<int>("IdMaterie")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProfesorSeminarId")
+                    b.Property<int>("IdStudent")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("TimeOfDay")
-                        .HasColumnType("datetime2");
+                    b.Property<float?>("Medie")
+                        .IsRequired()
+                        .HasColumnType("real");
+
+                    b.Property<float?>("NotaCurs")
+                        .IsRequired()
+                        .HasColumnType("real");
+
+                    b.Property<float?>("NotaSeminar")
+                        .IsRequired()
+                        .HasColumnType("real");
+
+                    b.Property<float?>("NotaSumativ")
+                        .IsRequired()
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Seminars");
+                    b.ToTable("SituatiiFinale");
+                });
+
+            modelBuilder.Entity("LicWeb.Models.Specializare", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("NumeSpecializare")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Specializari");
                 });
 
             modelBuilder.Entity("LicWeb.Models.Student", b =>
@@ -238,14 +357,18 @@ namespace LicWeb.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AnDeStudii")
+                    b.Property<int>("AnDeStudii")
                         .HasColumnType("int");
 
-                    b.Property<int?>("NumarMatricol")
+                    b.Property<int>("IdSpecializare")
+                        .HasMaxLength(450)
                         .HasColumnType("int");
 
-                    b.Property<string>("Specializare")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ModulStudii")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumarMatricol")
+                        .HasColumnType("int");
 
                     b.Property<string>("StudentUserId")
                         .IsRequired()
@@ -467,7 +590,7 @@ namespace LicWeb.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("CNP")
+                    b.Property<string>("Functie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -479,11 +602,11 @@ namespace LicWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumeComplet")
+                    b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SerieBuletin")
+                    b.Property<string>("Prenume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -493,6 +616,8 @@ namespace LicWeb.Migrations
                     b.Property<string>("TokenInregistrare")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("AspNetUsers");
 
                     b.HasDiscriminator().HasValue("User");
                 });

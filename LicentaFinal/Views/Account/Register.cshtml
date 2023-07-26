@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Inregistrare";
 }
+
 <section class="vh-auto">
     <div class="container h-auto">
         <div class="row d-flex" style="padding-top: 30px">
@@ -15,6 +16,7 @@
                 </div>
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5 " style="">
                     <div class="card text-white cardset" style="border-radius: 1rem;">
+
                         @if (TempData["Eroare"] != null)
                         {
                             <div class="col-md-12 alert alert-danger">
@@ -29,43 +31,44 @@
                         }
                         <div class="card-body p-5 text-center">
                             <div class="mb-md-5 mt-md-4 pb-5">
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="../">Inapoi</a></p>
                                 <h2 class="fw-bold mb-2 text-uppercase">Inregistrare</h2>
                                 <p class="text-white mb-5">Creaza un cont nou.</p>
                                 <div class="form-outline form-white mb-4">
-                                    <input asp-for="CodInregistrare" type="text" id="typeNameX" class="form-control form-control-lg" style="text-transform:uppercase"  placeholder="Cod Inregistrare" pattern=".{7,7}" />
+                                    <input asp-for="CodInregistrare" type="text" id="typeNameX" class="form-control form-control-lg" style="text-transform:uppercase" autocomplete="off" placeholder="Cod Inregistrare" pattern=".{7,7}" />
                                     <span asp-validation-for="CodInregistrare" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input onkeydown="return /[a-z, ]/i.test(event.key)" asp-for="NumeComplet" type="text" id="typeNameX" class="form-control form-control-lg" placeholder="Nume Complet" style="text-transform:capitalize" />
-                                    <span asp-validation-for="NumeComplet" class="text-danger"></span>
+                                    <input onkeydown="return /[a-z, ]/i.test(event.key)" asp-for="Nume" type="text" id="typeNameX" class="form-control form-control-lg" autocomplete="off" placeholder="Nume" style="text-transform:capitalize" />
+                                    <span asp-validation-for="Nume" class="text-danger"></span>
                                 </div>
-
                                 <div class="form-outline form-white mb-4">
-                                    <input asp-for="Parola" type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Parola" />
+                                    <input onkeydown="return /[a-z, ]/i.test(event.key)" asp-for="Prenume" type="text" id="typeNameX" class="form-control form-control-lg" autocomplete="off" placeholder="Prenume" style="text-transform:capitalize" />
+                                    <span asp-validation-for="Prenume" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Parola" type="password" id="typePasswordX" class="form-control form-control-lg" autocomplete="off" placeholder="Parola" />
                                     <span asp-validation-for="Parola" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-outline form-white mb-4">
-                                    <input asp-for="RepetaParola" type="password" id="typeRePasswordX" class="form-control form-control-lg" placeholder="Repeta Parola"/>
+                                    <input asp-for="RepetaParola" type="password" id="typeRePasswordX" class="form-control form-control-lg" autocomplete="off" placeholder="Repeta Parola" />
                                     <span asp-validation-for="RepetaParola" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline form-white mb-4 type=">
-                                    <input onkeydown="return !/[a-z]/i.test(event.key)" asp-for="CNP" type="text" id="typeRePasswordX" class="form-control form-control-lg" placeholder="CNP" />
-                                    <span asp-validation-for="CNP" class="text-danger"></span>
-                                </div>
-                                <div class="form-outline form-white mb-4">
-                                    <input asp-for="SerieBuletin" id="typeRePasswordX" class="form-control form-control-lg" style="text-transform:uppercase" placeholder="Serie Buletin" />
-                                    <span asp-validation-for="SerieBuletin" class="text-danger"></span>
-                                </div>
-                                <div class="form-outline form-white mb-4">
-                                    <input asp-for="Localitate" id="typeRePasswordX" class="form-control form-control-lg" placeholder="Localitate" />
+                                    <input asp-for="Localitate" type="text" id="typeRePasswordX" autocomplete="off" class="form-control form-control-lg" placeholder="Localitate" />
                                     <span asp-validation-for="Localitate" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input asp-for="Judet" id="typeRePasswordX" class="form-control form-control-lg" placeholder="Judet" />
+                                    <input asp-for="Judet" id="typeRePasswordX" class="form-control form-control-lg" autocomplete="off" placeholder="Judet" />
                                     <span asp-validation-for="Judet" class="text-danger"></span>
                                 </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="Parafa" id="typeRePasswordX" class="form-control form-control-lg" autocomplete="off" style="text-transform:uppercase" placeholder="Parafa" />
+                                    <span asp-validation-for="Parafa" class="text-danger"></span>
+                                </div>
                                 <button class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" type="submit">Inregistrare</button>
+                                
                             </div>
                         </div>
                     </div>

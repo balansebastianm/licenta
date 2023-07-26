@@ -8,11 +8,11 @@ namespace LicWeb.Models
     {
         [Key]
         public int Id { get; set; }
-        public string? MateriiPredate { get; set; }
         [Required]
         [ForeignKey("User")]
         [StringLength(450)]
         public string ProfesorUserId { get; set; }
-        public string? Functie { get; set; }
+        [Required]
+        public string Nomenclatura { get; set; }
     }
 }

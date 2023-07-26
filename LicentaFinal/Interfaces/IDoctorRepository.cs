@@ -4,12 +4,12 @@ namespace LicWeb.Interfaces
 {
     public interface IDoctorRepository
     {
-        Task<IEnumerable<DoctorFamilie>> GetAll();
-        Task<DoctorFamilie> GetByIdAsync(int id);
-        bool Add(DoctorFamilie doctorFamilie);
-        bool Update(DoctorFamilie doctorFamilie);
-        bool Delete(DoctorFamilie doctorFamilie);
+        Task<IEnumerable<Doctor>> GetAll();
+        Task<Doctor> GetByIdAsync(int id);
+        bool Add(Doctor doctor);
+        bool Update(Doctor doctor);
+        bool Delete(Doctor doctor);
         bool Save();
-        DoctorFamilie GetByUID(string Id);
+        Doctor GetByUID(string Id);
     }
 }

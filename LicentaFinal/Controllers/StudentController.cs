@@ -11,16 +11,13 @@ namespace LicWeb.Controllers
     public class StudentController : Controller
     {
         private readonly IAdeverintaRepository _adeverintaRepository;
-        private readonly IEnrollmentRepository _enrollmentRepository;
         private readonly IStudentRepository _studentRepository;
-        private readonly IAttendanceRepository _attendanceRepository;
+        private readonly IPrezentaRepository _attendanceRepository;
         public StudentController(IAdeverintaRepository adeverintaRepository, 
-            IEnrollmentRepository enrollmentRepository,
             IStudentRepository studentRepository,
-            IAttendanceRepository attendanceRepository)
+            IPrezentaRepository attendanceRepository)
         {
             _adeverintaRepository = adeverintaRepository;
-            _enrollmentRepository = enrollmentRepository;
             _studentRepository = studentRepository;
             _attendanceRepository = attendanceRepository;
         }
@@ -43,32 +40,14 @@ namespace LicWeb.Controllers
         public async Task<IActionResult> AprobaAdeverinta(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            adeverinta.CurrentStatus = 2;
+            adeverinta.CurrentStatus = 3;
             _adeverintaRepository.Save();
-            var enrollments = await _enrollmentRepository.GetAll();
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var studentId = _studentRepository.GetIdByUID(userId);
-            var attendances = await _attendanceRepository.GetAll();
-            foreach (var enrollment in enrollments)
-            {
-                if(enrollment.StudentId == studentId)
-                {
-                    foreach(var attendance in attendances)
-                    {
-                        if (attendance.EnrollmentId == enrollment.Id && attendance.AttendanceDateTime >= adeverinta.StartDate && attendance.AttendanceDateTime <= adeverinta.EndDate)
-                        {
-                            attendance.Present = true;
-                        }
-                    }
-                }
-            }
-            _attendanceRepository.Save();
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Download(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            var path = "D:\\licenta\\LicentaFinal\\wwwroot\\" + adeverinta.PathToAdeverinta;
+            var path = "C:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
             {
@@ -77,7 +56,6 @@ namespace LicWeb.Controllers
             memory.Position = 0;
             var ext = Path.GetExtension(path).ToLowerInvariant();
             return File(memory, "text/plain", Path.GetFileName(path));
-
         }
     }
 }

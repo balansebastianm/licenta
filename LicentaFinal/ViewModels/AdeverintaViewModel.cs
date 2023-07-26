@@ -16,6 +16,10 @@ namespace LicWeb.ViewModels
         public string EmailStudent { get; set; }
         [Required]
         public IFormFile? CheiePrivata { get; set; }
+        [Required]
+        public DateTime DataConsultatie { get; set; }
+        [Required]
+        public string Diagnostic { get; set; }
 
     }
 }

@@ -19,7 +19,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    <a href="../Admin" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Inapoi</a>
                     <a href="../Account/Logout" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Log Out</a>
                 </div>
             </div>
@@ -29,13 +29,13 @@
 <h1 class="text-center " style="padding-top:100px; padding-bottom: 20px;color:rgba(2,84,152,255);">Gestioneaza Adeverinte</h1>
 @foreach (var adeverinta in Model)
 {
-    if(adeverinta.CurrentStatus == 0)
-    {
+    @if (adeverinta.CurrentStatus == 0 || adeverinta.CurrentStatus == 1){
         <div class="card mb-3" style="border-color:rgba(2,84,152,255);">
             <div class="ch card-header" style="color:white; display:flex;">
+            
                 ID Adeverinta : @adeverinta.Id
                 @{
-                    if (adeverinta.Passed == 1)
+                    if (adeverinta.CurrentStatus == 1)
                     {
                         <div runat="server" id="StatusGood" style="margin-left: 20px; background-color:#6ba840; display:flex; align-content:center; height:25px; width:auto; gap:5px; padding-right:10px">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="green" class="bi bi-check" viewBox="0 0 16 16">
@@ -44,7 +44,7 @@
                             <p>Signature Matches</p>
                         </div>
                     }
-                    else
+                    else if(adeverinta.CurrentStatus == 0)
                     {
                         <div runat="server" id="status-bad" style="margin-left: 20px; background-color:#803742; display:flex; align-content:center; height:25px; width:auto; gap:5px; padding-right:10px">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-x" viewBox="0 0 16 16">
@@ -93,7 +93,8 @@
                 </form>
             </div>
         </div>
-    }
+        }
+    
 }
 <style>
 

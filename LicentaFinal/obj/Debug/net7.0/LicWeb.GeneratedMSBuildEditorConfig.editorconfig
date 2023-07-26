@@ -9,101 +9,133 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LicWeb
 build_property.RootNamespace = LicWeb
-build_property.ProjectDir = D:\licenta\LicentaFinal\
+build_property.ProjectDir = C:\licenta\LicentaFinal\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = D:\licenta\LicentaFinal
+build_property.MSBuildProjectDirectory = C:\licenta\LicentaFinal
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/licenta/LicentaFinal/Views/Account/ForgottenPassword.cshtml]
+[C:/licenta/LicentaFinal/Views/Account/ForgottenPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3R0ZW5QYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Account/Index.cshtml]
+[C:/licenta/LicentaFinal/Views/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Account/LogIn.cshtml]
+[C:/licenta/LicentaFinal/Views/Account/LogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Account/Register.cshtml]
+[C:/licenta/LicentaFinal/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/AdaugaMaterie.cshtml]
+[C:/licenta/LicentaFinal/Views/Account/RegisterProfesor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlclByb2Zlc29yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Account/RegisterStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlclN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Admin/AdaugaMaterie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRhdWdhTWF0ZXJpZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/GestioneazaAdeverinte.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/AdaugaSpecializare.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRhdWdhU3BlY2lhbGl6YXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Admin/GestioneazaAdeverinte.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2VzdGlvbmVhemFBZGV2ZXJpbnRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/GestioneazaInregistrari.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/GestioneazaInregistrari.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2VzdGlvbmVhemFJbnJlZ2lzdHJhcmkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/GestioneazaMaterii.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/GestioneazaMaterii.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2VzdGlvbmVhemFNYXRlcmlpLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/GestioneazaUtilizatori.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/GestioneazaUtilizatori.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2VzdGlvbmVhemFVdGlsaXphdG9yaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/Index.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/Invita.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/Invita.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW52aXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Admin/ModificaMaterie.cshtml]
+[C:/licenta/LicentaFinal/Views/Admin/ModificaMaterie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTW9kaWZpY2FNYXRlcmllLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Doctor/Index.cshtml]
+[C:/licenta/LicentaFinal/Views/Doctor/GenereazaAdeverinta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXEdlbmVyZWF6YUFkZXZlcmludGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Doctor/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Home/Index.cshtml]
+[C:/licenta/LicentaFinal/Views/Doctor/TrimiteAdeverinta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXFRyaW1pdGVBZGV2ZXJpbnRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Home/Privacy.cshtml]
+[C:/licenta/LicentaFinal/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Shared/Error.cshtml]
+[C:/licenta/LicentaFinal/Views/Profesor/Catalog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcQ2F0YWxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Profesor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Profesor/ModificaSituatie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcTW9kaWZpY2FTaXR1YXRpZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/licenta/LicentaFinal/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Shared/NotFound.cshtml]
+[C:/licenta/LicentaFinal/Views/Shared/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5vdEZvdW5kLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Shared/PageNotFound.cshtml]
+[C:/licenta/LicentaFinal/Views/Shared/PageNotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhZ2VOb3RGb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/licenta/LicentaFinal/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Student/Index.cshtml]
+[C:/licenta/LicentaFinal/Views/Student/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/_ViewImports.cshtml]
+[C:/licenta/LicentaFinal/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/_ViewStart.cshtml]
+[C:/licenta/LicentaFinal/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/licenta/LicentaFinal/Views/Shared/_Layout.cshtml]
+[C:/licenta/LicentaFinal/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-meq0prbpz9

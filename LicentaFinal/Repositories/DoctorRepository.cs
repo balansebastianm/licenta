@@ -15,31 +15,31 @@ namespace LicWeb.Repositories
             _context = context;
         }
 
-        public bool Add(DoctorFamilie doctorFamilie)
+        public bool Add(Doctor doctorFamilie)
         {
             _context.Add(doctorFamilie);
             return Save();
         }
 
-        public bool Delete(DoctorFamilie doctorFamilie)
+        public bool Delete(Doctor doctorFamilie)
         {
             _context.Remove(doctorFamilie);
             return Save();
         }
 
-        public async Task<IEnumerable<DoctorFamilie>> GetAll()
+        public async Task<IEnumerable<Doctor>> GetAll()
         {
-            return await _context.DoctoriFamilie.ToListAsync();
+            return await _context.Doctori.ToListAsync();
         }
 
-        public async Task<DoctorFamilie> GetByIdAsync(int id)
+        public async Task<Doctor> GetByIdAsync(int id)
         {
-            return await _context.DoctoriFamilie.FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.Doctori.FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public DoctorFamilie GetByUID(string Id)
+        public Doctor GetByUID(string Id)
         {
-            return _context.DoctoriFamilie.FirstOrDefault(b => b.DoctorUserId == Id);
+            return _context.Doctori.FirstOrDefault(b => b.DoctorUserId == Id);
         }
 
         public bool Save()
@@ -48,7 +48,7 @@ namespace LicWeb.Repositories
             return saved > 0 ? true : false;
         }
 
-        public bool Update(DoctorFamilie doctorFamilie)
+        public bool Update(Doctor doctorFamilie)
         {
             _context.Update(doctorFamilie);
             return Save();

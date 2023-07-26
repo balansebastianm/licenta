@@ -10,15 +10,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IMaterieRepository, MaterieRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProfesorRepository, ProfesorRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<ISeminarRepository, SeminarRepository>();
 builder.Services.AddScoped<IAdeverintaRepository, AdeverintaRepository>();
-builder.Services.AddScoped<IAttendanceRepository, AttendanceRepository>();
-builder.Services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+builder.Services.AddScoped<IPrezentaRepository, PrezentaRepository>();
+builder.Services.AddScoped<ISpecializareRepository, SpecializareRepository>();
+builder.Services.AddScoped<ISituatieFinalaRepository, SituatieFinalaRepository>();
+builder.Services.AddScoped<ICheieRepository, CheieRepository>();
+builder.Services.AddScoped<IOrarRepository, OrarRepository>();
+builder.Services.AddScoped<IModulRepository, ModulRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -43,11 +46,14 @@ builder.Services.Configure<IdentityOptions>(x => {
     x.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30);
 });
 var app = builder.Build();
-
-if(args.Length == 1 && args[0].ToLower() == "seeddata")
+if (args.Length == 1 && args[0].ToLower() == "seeddata")
 {
     await Seed.SeedUsersAndRolesAsync(app);
 }
+/*if(true)
+{
+    await Seed.SeedUsersAndRolesAsync(app);
+}*/
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

@@ -8,9 +8,18 @@ namespace LicWeb.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string EncryptedData { get; set; }
+        [ForeignKey(nameof(Doctor))] 
+        public int IdDoctor { get; set; }
         [Required]
+        [ForeignKey(nameof(User))]
+        [StringLength(450)]
         public string IdStudent { get; set; }
+        [Required]
+        public string SemnaturaDoctor { get; set; }
+        [Required]
+        public string SemnaturaUniversitate { get; set; }
+        [Required]
+        public int CurrentStatus { get; set; } //0-semnatura nu coincide (doctor), 1-semnatura doctor OK, 2-semnatura admin, 3- abprob. stud.
         [Required]
         public DateTime StartDate { get; set; }
         [Required]
@@ -18,9 +27,6 @@ namespace LicWeb.Models
         [Required]
         public string PathToAdeverinta { get; set; }
         [Required]
-        [ForeignKey(nameof(DoctorFamilie))]
-        public int DoctorId { get; set; }
-        public int Passed { get; set; }
-        public int CurrentStatus { get; set; } //0-trimisa, 1-aprobata de administrator, 2-aprobata de student, -1-respinsa de prof, -2-respinsa de student
+        public DateTime DataConsultatie { get; set; }
     }
 }

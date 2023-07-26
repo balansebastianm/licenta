@@ -59,5 +59,7 @@ namespace LicWeb.Repositories
             string UserId = query.Select(x => x.Id).ToList().FirstOrDefault();
             return UserId;
         }
+
+
     }
 }

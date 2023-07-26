@@ -13,7 +13,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <button onclick="history.back()" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px">Inapoi</button>
+                    <a href="../GestioneazaMaterii" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Inapoi</a>
                     <a href="../Account/Logout" class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5 margin" style=" color:white; margin-bottom: 5px; margin-top: 5px; margin-left:10px">Log Out</a>
                 </div>
             </div>
@@ -61,24 +61,44 @@
                                     <span asp-validation-for="StartTimeCurs" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline form-white mb-4">
+                                    <label for="typeTimpulZileiCurs" class="col-form-label float-lg-start fw-bold">Ora Terminare Curs</label>
+                                    <input asp-for="EndTimeCurs" type="time" id="typeTimpulZileiCurs" class="form-control form-control-lg" placeholder="Ora Incepere Curs" />
+                                    <span asp-validation-for="EndTimeCurs" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeZiuaSaptamaniiLab/Seminar" class="col-form-label float-lg-start fw-bold">Ziua Saptamanii Lab/Seminar (1 = Luni)</label>
+                                    <input asp-for="ZiuaSaptamaniiSeminar" type="text" id="typeZiuaSaptamaniiLab/Seminar" class="form-control form-control-lg" placeholder="Ziua Saptamanii Lab/Seminar" />
+                                    <span asp-validation-for="ZiuaSaptamaniiSeminar" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeTimpulZilei" class="col-form-label float-lg-start fw-bold">Ora Incepere Lab/Seminar</label>
+                                    <input asp-for="StartTimeSeminar" type="time" id="typeTimpulZilei" class="form-control form-control-lg" placeholder="Ora Incepere Lab/Seminar" />
+                                    <span asp-validation-for="StartTimeSeminar" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeTimpulZilei" class="col-form-label float-lg-start fw-bold">Ora Terminare Lab/Seminar</label>
+                                    <input asp-for="EndTimeSeminar" type="time" id="typeTimpulZilei" class="form-control form-control-lg" placeholder="Ora Incepere Lab/Seminar" />
+                                    <span asp-validation-for="EndTimeSeminar" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
                                     <label for="typeProfesorCurs" class="col-form-label float-lg-start fw-bold">ID Profesor Curs</label>
                                     <input asp-for="ProfesorCursId" type="text" id="typeProfesorCurs" class="form-control form-control-lg" placeholder="ID Profesor Curs" />
                                     <span asp-validation-for="ProfesorCursId" class="text-danger"></span>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <label for="typeZiuaSaptamaniiLab/Seminar" class="col-form-label float-lg-start fw-bold">Ziua Saptamanii Lab/Seminar (1 = Luni)</label>
-                                    <input asp-for="ZiuaSaptamaniiLabSeminar" type="text" id="typeZiuaSaptamaniiLab/Seminar" class="form-control form-control-lg" placeholder="Ziua Saptamanii Lab/Seminar" />
-                                    <span asp-validation-for="ZiuaSaptamaniiLabSeminar" class="text-danger"></span>
-                                </div>
-                                <div class="form-outline form-white mb-4">
-                                    <label for="typeTimpulZilei" class="col-form-label float-lg-start fw-bold">Ora Incepere Lab/Seminar</label>
-                                    <input asp-for="StartTimeLabSeminar" type="time" id="typeTimpulZilei" class="form-control form-control-lg" placeholder="Ora Incepere Lab/Seminar" />
-                                    <span asp-validation-for="StartTimeLabSeminar" class="text-danger"></span>
-                                </div>
-                                <div class="form-outline form-white mb-4">
                                     <label for="typeProfesorSeminar" class="col-form-label float-lg-start fw-bold">ID Profesor Lab/Seminar</label>
                                     <input asp-for="ProfesorSeminarId" type="text" id="typeProfesorSeminar" class="form-control form-control-lg" placeholder="ID Profesor Lab/Seminar" />
                                     <span asp-validation-for="ProfesorSeminarId" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeProfesorCurs" class="col-form-label float-lg-start fw-bold">Procentaj Prezenta Curs</label>
+                                    <input asp-for="ProcentajPrezCurs" type="text" id="typeProfesorCurs" class="form-control form-control-lg" placeholder="ID Profesor Curs" />
+                                    <span asp-validation-for="ProcentajPrezCurs" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <label for="typeProfesorSeminar" class="col-form-label float-lg-start fw-bold">Procentaj Prezenta Seminar</label>
+                                    <input asp-for="ProcentajPrezSeminar" type="text" id="typeProfesorSeminar" class="form-control form-control-lg" placeholder="ID Profesor Lab/Seminar" />
+                                    <span asp-validation-for="ProcentajPrezSeminar" class="text-danger"></span>
                                 </div>
                                 <button class="btn btn-raised shadow my-button btn-outline-light btn-lg px-5" style="margin-top:15px" type="submit">Modifica</button>
                             </div>
@@ -121,23 +141,11 @@
 
     }
 
-    ::-webkit-input-placeholder { /* WebKit browsers */
+    ::-webkit-input-placeholder {
         text-transform: none;
     }
 
-    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-        text-transform: none;
-    }
-
-    ::-moz-placeholder { /* Mozilla Firefox 19+ */
-        text-transform: none;
-    }
-
-    :-ms-input-placeholder { /* Internet Explorer 10+ */
-        text-transform: none;
-    }
-
-    ::placeholder { /* Recent browsers */
+    ::placeholder { 
         text-transform: none;
     }
 </style>

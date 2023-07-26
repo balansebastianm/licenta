@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Reflection.Emit;
 using System.Diagnostics;
@@ -14,6 +15,7 @@ using System;
 using System.IO;
 namespace LicWeb.Controllers
 {
+
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
@@ -21,28 +23,43 @@ namespace LicWeb.Controllers
         private readonly IUserRepository userRepository;
         private readonly ApplicationDbContext context;
         private readonly IDoctorRepository _doctorRepository;
-        private readonly ICourseRepository _courseRepository;
+        private readonly IMaterieRepository _courseRepository;
         private readonly IProfesorRepository _proffessorRepository;
-        private readonly ISeminarRepository _seminarRepository;
         private readonly IAdeverintaRepository _adeverintaRepository;
+        private readonly IOrarRepository _orarRepository;
+        private readonly ISpecializareRepository _specializareRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly IMaterieRepository _materieRepository;
+        private readonly IPrezentaRepository _prezentaRepository;
+        private readonly ISituatieFinalaRepository _situatieFinalaRepository;
 
         public AdminController(UserManager<User> userManager,
             IUserRepository userRepository,
             ApplicationDbContext context,
             IDoctorRepository doctorRepository,
-            ICourseRepository courseRepository,
-            ISeminarRepository seminarRepository,
+            IMaterieRepository courseRepository,
             IProfesorRepository profesorRepository,
-            IAdeverintaRepository adeverintaRepository)
+            IAdeverintaRepository adeverintaRepository,
+            IOrarRepository orarRepository,
+            ISpecializareRepository specializareRepository,
+            IStudentRepository studentRepository,
+            IMaterieRepository materieRepository,
+            IPrezentaRepository prezentaRepository,
+            ISituatieFinalaRepository situatieFinalaRepository)
         {
             this.userManager = userManager;
             this.userRepository = userRepository;
             this.context = context;
             _doctorRepository = doctorRepository;
             _courseRepository = courseRepository;
-            _seminarRepository = seminarRepository;
             _proffessorRepository = profesorRepository;
             _adeverintaRepository = adeverintaRepository;
+            _orarRepository = orarRepository;
+            _specializareRepository = specializareRepository;
+            _studentRepository = studentRepository;
+            _materieRepository = materieRepository;
+            _prezentaRepository = prezentaRepository;
+            _situatieFinalaRepository = situatieFinalaRepository;
         }
 
         public ActionResult Index()
@@ -66,8 +83,6 @@ namespace LicWeb.Controllers
                 {
                     Id = user.Id,
                     Email = user.Email,
-                    CNP = user.CNP,
-                    SerieBuletin = user.SerieBuletin,
                     UserName = user.UserName,
                     StatusCont = user.StatusCont
                 };
@@ -84,20 +99,19 @@ namespace LicWeb.Controllers
             {
                 try
                 {
-                    Debug.WriteLine(course.ProfesorCursId);
-                    var profCurs = await _proffessorRepository.GetByIdAsync(course.ProfesorCursId);
-                    var IdProfLab = _seminarRepository.GetProfByAssocCourse(course.ProfesorCursId);
-                    var profLab = await _proffessorRepository.GetByIdAsync(IdProfLab);
+                    Debug.WriteLine(course.IdProfCurs);
+                    var profCurs = await _proffessorRepository.GetByIdAsync(course.IdProfCurs);
+                    var profLab = await _proffessorRepository.GetByIdAsync(course.IdProfSeminar);
                     string profCursId = profCurs.ProfesorUserId;
-                    string profLabId = profLab.ProfesorUserId;
+                    string profLabId = profLab.ProfesorUserId;  
                     var GetNameCourse = await userRepository.GetByIdAsync(profCursId);
                     var GetNameLab = await userRepository.GetByIdAsync(profLabId);
-                    string profCursName = GetNameCourse.UserName;
-                    string profLabName = GetNameLab.UserName;
+                    string profCursName = GetNameCourse.Nume;
+                    string profLabName = GetNameLab.Prenume;
                     var courseViewModel = new CourseViewModel()
                     {
                         Id = course.Id,
-                        CourseName = course.CourseName,
+                        CourseName = course.NumeMaterie,
                         ProfCursName = profCursName,
                         ProfLabName = profLabName
                     };
@@ -107,9 +121,7 @@ namespace LicWeb.Controllers
                 {
                     Debug.WriteLine(ex.Message);
                 }
-
             }
-
             return View(resultCourse);
         }
         [HttpPost]
@@ -123,31 +135,37 @@ namespace LicWeb.Controllers
             var course = await _courseRepository.GetByIdAsync(materieViewModel.Id);
             if (course != null)
             {
-                course.CourseName = materieViewModel.NumeMaterie;
-                course.DayOfWeek = materieViewModel.ZiuaSaptamaniiCurs;
+                course.NumeMaterie = materieViewModel.NumeMaterie;
+                course.NrCredite = materieViewModel.NrCredite;
+                course.AnStudii = materieViewModel.AnStudii;
+                course.ModulStudii = materieViewModel.ModulStudii;
+                course.IdProfCurs = materieViewModel.ProfesorCursId;
+                course.IdProfSeminar = materieViewModel.ProfesorSeminarId;
+                course.ProcentajPrezentaCurs = materieViewModel.ProcentajPrezCurs;
+                course.ProcentajPrezentaSeminar = materieViewModel.ProcentajPrezSeminar;
+                _courseRepository.Save();
+
+                var orar = await _orarRepository.GetByMaterieIdAsync(materieViewModel.Id);
+                orar.ZiCurs = materieViewModel.ZiuaSaptamaniiCurs;
+                orar.ZiSeminar = materieViewModel.ZiuaSaptamaniiSeminar;
                 var reference = new DateTime(2023, 1, 1);
                 TimeOnly timeOnly = materieViewModel.StartTimeCurs;
                 reference += timeOnly.ToTimeSpan();
-                course.TimeOfDay = reference;
-                course.ProfesorCursId = materieViewModel.ProfesorCursId;
-                var seminar = await _seminarRepository.GetByCursId(materieViewModel.Id);
-                if (seminar != null)
-                {
-                    seminar.ProfesorSeminarId = materieViewModel.ProfesorSeminarId;
-                    seminar.DayOfWeek = materieViewModel.ZiuaSaptamaniiLabSeminar;
-                    var reference2 = new DateTime(2023, 1, 1);
-                    TimeOnly timeOnly2 = materieViewModel.StartTimeLabSeminar;
-                    reference2 += timeOnly2.ToTimeSpan();
-                    seminar.TimeOfDay = reference2;
-                    _seminarRepository.Save();
-                    _courseRepository.Save();
-                    TempData["Succes"] = "Cursul a fost actualizat cu succes.";
-                }
-                else
-                {
-                    TempData["Erorr"] = "A intervenit o eroare.";
-                }
-
+                orar.InceputCurs = reference;
+                reference = new DateTime(2023, 1, 1);
+                timeOnly = materieViewModel.EndTimeCurs;
+                reference += timeOnly.ToTimeSpan();
+                orar.FinalCurs = reference;
+                reference = new DateTime(2023, 1, 1);
+                timeOnly = materieViewModel.StartTimeSeminar;
+                reference += timeOnly.ToTimeSpan();
+                orar.InceputSeminar = reference;
+                reference = new DateTime(2023, 1, 1);
+                timeOnly = materieViewModel.EndTimeSeminar;
+                reference += timeOnly.ToTimeSpan();
+                orar.FinalSeminar = reference;
+                _orarRepository.Save();
+                TempData["Erorr"] = "Succes";
             }
             return View();
         }
@@ -191,10 +209,10 @@ namespace LicWeb.Controllers
                     "Sistem",
                     "Utilizator",
                     "Invitat");
-                string PathToPrivateKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\private-key-" + user.Email + ".pem";
-                string PathToPublicKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + user.Email + ".pem";
-                string PathToCertificate = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".der";
-                string PathToCSR = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".csr";
+                string PathToPrivateKey = user.Email + ".zip";
+                string PathToPublicKey = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + user.Email + ".pem";
+                string PathToCertificate = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".der";
+                string PathToCSR = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".csr";
                 System.IO.File.Delete(PathToPrivateKey);
                 System.IO.File.Delete(PathToPublicKey);
                 System.IO.File.Delete(PathToCertificate);
@@ -218,11 +236,11 @@ namespace LicWeb.Controllers
 
 
                 MailManager m = new MailManager();
-                string PathToPrivateKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\private-key-" + user.Email + ".pem";
-                string PathToPublicKey = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + user.Email + ".pem";
-                string PathToCertificate = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".der";
-                string PathToCSR = "D:\\licenta\\LicentaFinal\\Certificate-Requests\\" + user.Email + ".csr";
-                string MoveCertificate = "D:\\licenta\\LicentaFinal\\Valid Certificates\\certificat-" + user.Email + ".der";
+                string PathToPrivateKey = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\" + user.Email + ".zip";
+                string PathToPublicKey = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\public-key-" + user.Email + ".pem";
+                string PathToCertificate = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\certificat-" + user.Email + ".der";
+                string PathToCSR = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\" + user.Email + ".csr";
+                string MoveCertificate = "C:\\licenta\\LicentaFinal\\Valid Certificates\\certificat-" + user.Email + ".der";
                 m.SendMail(user.Email,
                 "Inregistrare Platforma",
                 "Cererea dumneavoastra de inregistrare a fost aprobata. Certificatul si perechea de chei au fost atasate.\n",
@@ -234,20 +252,8 @@ namespace LicWeb.Controllers
                 PathToPublicKey,
                 PathToCertificate
                 );
-
-                var newDoctor = new DoctorFamilie()
-                {
-                    CheiePublica = CA.GetPkeyRegister(user.Email),
-                    DoctorUserId = user.Id
-                };
-
-                var newDoctorResponse = _doctorRepository.Add(newDoctor);
-                if (newDoctorResponse)
-                {
-                    user.StatusCont = 2;
-                    userRepository.Save();
-
-                }
+                user.StatusCont = 2;
+                userRepository.Save();
                 System.IO.File.Delete(PathToPrivateKey);
                 System.IO.File.Delete(PathToPublicKey);
                 System.IO.File.Delete(PathToCSR);
@@ -261,54 +267,120 @@ namespace LicWeb.Controllers
             }
         }
         [HttpGet]
-        public ActionResult AdaugaMaterie()
+        public IActionResult AdaugaMaterie()
         {
+            Debug.WriteLine("IN GET ==============================");
             var response = new MaterieViewModel();
             return View(response);
         }
 
         [HttpPost]
-        public IActionResult AdaugaMaterie(MaterieViewModel materieViewModel)
+        public async Task<IActionResult> AdaugaMaterie(MaterieViewModel materieViewModel)
         {
+            Debug.WriteLine("IN POST ==============================");
+            //adauga materia
+            var course = new Materie()
+            {
+                NumeMaterie = materieViewModel.NumeMaterie,
+                NrCredite = materieViewModel.NrCredite,
+                IdSpecializare = materieViewModel.IdSpecializare,
+                AnStudii = materieViewModel.AnStudii,
+                ModulStudii = materieViewModel.ModulStudii,
+                IdProfCurs = materieViewModel.ProfesorCursId,
+                IdProfSeminar = materieViewModel.ProfesorSeminarId,
+                ProcentajPrezentaCurs = materieViewModel.ProcentajPrezCurs,
+                ProcentajPrezentaSeminar = materieViewModel.ProcentajPrezSeminar,
+            };
+            _courseRepository.Add(course);
+            _courseRepository.Save();
+            //stabileste-o in orar
+            var orar = new Orar();
+            orar.ZiCurs = materieViewModel.ZiuaSaptamaniiCurs;
+            orar.ZiSeminar = materieViewModel.ZiuaSaptamaniiSeminar;
             var reference = new DateTime(2023, 1, 1);
             TimeOnly timeOnly = materieViewModel.StartTimeCurs;
             reference += timeOnly.ToTimeSpan();
-            var course = new Course()
-            {
-                CourseName = materieViewModel.NumeMaterie,
-                DayOfWeek = materieViewModel.ZiuaSaptamaniiCurs,
-                TimeOfDay = reference,
-                ProfesorCursId = materieViewModel.ProfesorCursId
-            };
-            var newCourseResponse = _courseRepository.Add(course);
-            if (newCourseResponse)
-            {
-                _courseRepository.Save();
-            }
-            var reference2 = new DateTime(2023, 1, 1);
-            TimeOnly timeOnly2 = materieViewModel.StartTimeLabSeminar;
-            reference2 += timeOnly2.ToTimeSpan();
-            var find = _courseRepository.GetIdByCourseName(course.CourseName);
-            var seminar = new Seminar()
-            {
-                ProfesorSeminarId = materieViewModel.ProfesorSeminarId,
-                DayOfWeek = materieViewModel.ZiuaSaptamaniiLabSeminar,
-                TimeOfDay = reference2,
-                IdCursAsociat = course.Id
-            };
+            orar.InceputCurs = reference;
+            reference = new DateTime(2023, 1, 1);
+            timeOnly = materieViewModel.EndTimeCurs;
+            reference += timeOnly.ToTimeSpan();
+            orar.FinalCurs = reference;
+            reference = new DateTime(2023, 1, 1);
+            timeOnly = materieViewModel.StartTimeSeminar;
+            reference += timeOnly.ToTimeSpan();
+            orar.InceputSeminar = reference;
+            reference = new DateTime(2023, 1, 1);
+            timeOnly = materieViewModel.EndTimeSeminar;
+            reference += timeOnly.ToTimeSpan();
+            orar.FinalSeminar = reference;
+            orar.IdMaterie = course.Id;
+            _orarRepository.Add(orar);
+            _orarRepository.Save();
+            //creeaza tabel prezente si situatie finala
 
-            var newSeminarResponse = _seminarRepository.Add(seminar);
-            if (newCourseResponse && newSeminarResponse)
+            var studenti = await _studentRepository.GetAll();
+            if (studenti != null)
             {
-                _seminarRepository.Save();
-                TempData["Succes"] = "Materia a fsot adaugata cu succes";
+                foreach (var student in studenti)
+                {
+                    if (student.IdSpecializare == course.IdSpecializare && student.AnDeStudii == course.AnStudii && student.ModulStudii == course.ModulStudii)
+                    {
+                        //prezenta
+                        var prezenta = new Prezenta();
+                        Debug.WriteLine("STUDENT ID: ");
+                        Debug.WriteLine(student.Id);
+                        Debug.WriteLine("COURSE ID: ");
+                        Debug.WriteLine(course.Id);
+                        prezenta.IdStudent = student.Id;
+                        prezenta.IdMaterie = course.Id;
+                        Debug.WriteLine("====================================");
+                        prezenta.Prezenta_C1 = 0;
+                        prezenta.Prezenta_C2 = 0;
+                        prezenta.Prezenta_C3 = 0;
+                        prezenta.Prezenta_C4 = 0;
+                        prezenta.Prezenta_C5 = 0;
+                        prezenta.Prezenta_C6 = 0;
+                        prezenta.Prezenta_C7 = 0;
+                        prezenta.Prezenta_S1 = 0;
+                        prezenta.Prezenta_S2 = 0;
+                        prezenta.Prezenta_S3 = 0;
+                        prezenta.Prezenta_S4 = 0;
+                        prezenta.Prezenta_S5 = 0;
+                        prezenta.Prezenta_S6 = 0;
+                        prezenta.Prezenta_S7 = 0;
+
+                        var result = _prezentaRepository.Add(prezenta);
+                        if (!result)
+                        {
+
+                            Debug.WriteLine(result.ToString());
+                        }
+                        else
+                        {
+                            _prezentaRepository.Save();
+                        }
+
+                        //situatie
+                        var situatie = new SituatieFinala();
+                        situatie.IdStudent = student.Id;
+                        situatie.IdMaterie = course.Id;
+                        situatie.NotaSeminar = 0;
+                        situatie.NotaCurs = 0;
+                        situatie.NotaSumativ = 0;
+                        situatie.Medie = 0;
+                        situatie.EsteRestant = 0;
+                        _situatieFinalaRepository.Add(situatie);
+                        _situatieFinalaRepository.Save();
+                    }
+                }
             }
-            else
-            {
-                TempData["Error"] = "A intervenit o eroare";
-            }
-            return View();
+              
+            TempData["Succes"] = "Materia a fost adaugata";
+
+            return RedirectToAction("AdaugaMaterie");
+
         }
+
         [HttpGet]
         public ActionResult Invita()
         {
@@ -353,7 +425,6 @@ namespace LicWeb.Controllers
                     "Sistem",
                     "Utilizator",
                     "Invitat");
-                Debug.WriteLine(regcode);
                 var newUser = new User()
                 {
                     Email = email,
@@ -363,7 +434,6 @@ namespace LicWeb.Controllers
 
                 };
                 var newUserResponse = await userManager.CreateAsync(newUser, "temppassword");
-                Console.WriteLine(newUserResponse.ToString());
 
                 if (newUserResponse.Succeeded)
                 {
@@ -390,14 +460,18 @@ namespace LicWeb.Controllers
         public async Task<ActionResult> AprobaAdeverinta(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            adeverinta.CurrentStatus = 1;
+            //semnare digitala
+            CertificateAuthority CA = new CertificateAuthority();
+            string signature = CA.SignData(adeverinta.PathToAdeverinta, "RootCert-private.pem", 1);
+            adeverinta.SemnaturaUniversitate = signature;
+            adeverinta.CurrentStatus = 2;
             _adeverintaRepository.Save();
             return RedirectToAction("GestioneazaAdeverinte");
         }
         public async Task<IActionResult> Download(int id)
         {
             var adeverinta = await _adeverintaRepository.GetByIdAsync(id);
-            var path = "D:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
+            var path = "C:\\licenta\\LicentaFinal\\wwwroot\\uploads\\" + adeverinta.PathToAdeverinta;
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
             {
@@ -406,7 +480,29 @@ namespace LicWeb.Controllers
             memory.Position = 0;
             var ext = Path.GetExtension(path).ToLowerInvariant();
             return File(memory, "text/plain", Path.GetFileName(path));
+        }
+        [HttpGet]
+        public ActionResult AdaugaSpecializare()
+        {
+            var response = new AdaugaSpecializareViewModel();
+            return View(response);
+        }
 
+        [HttpPost]
+        public Task<IActionResult> AdaugaSpecializare(AdaugaSpecializareViewModel adaugaSpecializare)
+        {
+            var specializare = new Specializare();
+            specializare.NumeSpecializare = adaugaSpecializare.NumeSpecializare;
+            var resultAdauga = _specializareRepository.Add(specializare);
+            if (resultAdauga)
+            {
+                TempData["Succes"] = "Specializarea a fost adaugata";
+            }
+            else
+            {
+                TempData["Error"] = "Specializarea nu a putut fi adaugata";
+            }
+            return Task.FromResult<IActionResult>(View(adaugaSpecializare));
         }
     }
 }

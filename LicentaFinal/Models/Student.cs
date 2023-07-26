@@ -8,12 +8,17 @@ namespace LicWeb.Models
     {
         [Key]
         public int Id { get; set; }
-        public int? NumarMatricol { get; set; }
-        public int? AnDeStudii { get; set; }
-        public string? Specializare { get; set; }
-        [Required]
         [ForeignKey("User")]
         [StringLength(450)]
         public string StudentUserId { get; set; }
+        [Required]
+        public int NumarMatricol { get; set; }
+        [ForeignKey("Specializare")]
+        [StringLength(450)]
+        public int IdSpecializare { get; set; }
+        
+        public int AnDeStudii { get; set; }
+        public int ModulStudii { get; set; }
+
     }
 }

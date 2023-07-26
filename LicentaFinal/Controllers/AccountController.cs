@@ -18,19 +18,27 @@ namespace LicWeb.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IUserRepository _userRepository;
         private readonly IDoctorRepository _doctorRepository;
-        string UserName;
+        private readonly ICheieRepository _cheieRepository;
+        private readonly IStudentRepository _studentRepository;
+        private readonly IProfesorRepository _profesorRepository;
 
         public AccountController(UserManager<User> userManager,
             SignInManager<User> signInManager,
             ApplicationDbContext context,
             IUserRepository userRepository,
-            IDoctorRepository doctorRepository)
+            IDoctorRepository doctorRepository,
+            ICheieRepository cheieRepository,
+            IStudentRepository studentRepository,
+            IProfesorRepository profesorRepository)
         {
             _context = context;
             _signInManager = signInManager;
             _userManager = userManager;
             _userRepository = userRepository;
             _doctorRepository = doctorRepository;
+            _cheieRepository = cheieRepository;
+            _studentRepository = studentRepository;
+            _profesorRepository = profesorRepository;
         }
         public IActionResult Index()
         {
@@ -43,6 +51,7 @@ namespace LicWeb.Controllers
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (User.Identity.IsAuthenticated)
             {
+                Debug.WriteLine("------------------------");
                 Debug.WriteLine(User.Identity.Name);
 #pragma warning disable CS8604 // Possible null reference argument.
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -90,10 +99,11 @@ namespace LicWeb.Controllers
                             return RedirectToAction("Index", "Student");
                         else if (role == "doctor")
                             return RedirectToAction("Index", "Doctor");
-#pragma warning disable CS8604 // Possible null reference argument.
-                        UserName = user.Email;
-#pragma warning restore CS8604 // Possible null reference argument.
                     }
+                }
+                else
+                {
+                    TempData["Error"] = "Parola gresita.";
                 }
             }
             else if (user != null && (user.StatusCont == 0 || user.StatusCont == 1))
@@ -163,6 +173,89 @@ namespace LicWeb.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                var res2 = await _userManager.GetRolesAsync(user);
+
+                string role = string.Join(", ", res2);
+                if (role == "profesor")
+                    return RedirectToAction("Index", "Profesor");
+                else if (role == "admin")
+                    return RedirectToAction("Index", "Admin");
+                else if (role == "student")
+                    return RedirectToAction("Index", "Student");
+                else if (role == "doctor")
+                    return RedirectToAction("Index", "Doctor");
+            }
+            var response = new RegisterViewModel();
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
+        {
+            string id = _userRepository.GetIdByToken(registerViewModel.CodInregistrare);
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+
+                user.Nume = registerViewModel.Nume;
+                user.Prenume = registerViewModel.Prenume;
+                user.Localitate = registerViewModel.Localitate;
+                user.Judet = registerViewModel.Judet;
+                string userName = user.Nume + " " + user.Prenume;
+                user.UserName = userName;
+                user.TokenInregistrare = "";
+                user.StatusCont = 1;
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                await _userManager.ResetPasswordAsync(user, token, registerViewModel.Parola);
+                _userRepository.Save();
+                CertificateAuthority CA = new CertificateAuthority();
+                CA.GenerateCSR(user.Email, user.Localitate, user.Judet);
+                string PvPem = "C:\\licenta\\LicentaFinal\\Certificate-Requests\\private-key-" + user.Email + ".pem";
+                CA.EncryptFile(registerViewModel.Parola, PvPem, user.Email);
+                var Cheie = new Cheie()
+                {
+                    CheiePublica = CA.GetPkeyRegister(user.Email),
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddYears(1)
+                };
+                var newCheieResponse = _cheieRepository.Add(Cheie);
+                var newDoctor = new Doctor()
+                {
+                    DoctorUserId = user.Id,
+                    Parafa = registerViewModel.Parafa,
+                    IdCheiePublica = Cheie.Id
+                };
+                var newDoctorResponse = _doctorRepository.Add(newDoctor);
+                if (newDoctorResponse && newCheieResponse)
+                {
+                    _doctorRepository.Save();
+                    _cheieRepository.Save();
+                }
+                TempData["Succes"] = "Inregistrare completa, in scurt timp vei fi contactat pe email";
+                return View(registerViewModel);
+
+            }
+            else
+            {
+                TempData["Error"] = "Token invalid.";
+                return View(registerViewModel);
+            }
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RegisterStudent()
+        {
 #pragma warning disable CS8604 // Possible null reference argument.
 
             if (User.Identity.IsAuthenticated)
@@ -184,47 +277,93 @@ namespace LicWeb.Controllers
             return View(response);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
+        public async Task<IActionResult> RegisterStudentAsync(RegisterViewModel registerViewModelStud)
         {
-            string id = "";
-            id = _userRepository.GetIdByToken(registerViewModel.CodInregistrare);
-            System.Diagnostics.Debug.WriteLine(id);
-            var user = await _userManager.FindByIdAsync(id);
-            if (user != null)
-            {
-                user.UserName = registerViewModel.NumeComplet;
-                string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-                IdentityResult passwordChangeResult = await _userManager.ResetPasswordAsync(user, resetToken, registerViewModel.Parola);
+            //create user
+            var user = new User();
+            user.Nume = registerViewModelStud.Nume;
+            user.Prenume = registerViewModelStud.Prenume;
+            user.Localitate = registerViewModelStud.Localitate;
+            user.Judet = registerViewModelStud.Judet;
+            user.TokenInregistrare = "";
+            user.StatusCont = 2;
+            user.Email = registerViewModelStud.Email;
+            var newUserResponse = await _userManager.CreateAsync(user, registerViewModelStud.Parola);
+            Console.WriteLine(newUserResponse.ToString());
 
-                user.CNP = registerViewModel.CNP;
-                user.SerieBuletin = registerViewModel.SerieBuletin;
-                user.Localitate = registerViewModel.Localitate;
-                user.Judet = registerViewModel.Judet;
-                user.TokenInregistrare = "";
-                user.StatusCont = 1;
-                _userRepository.Save();
-                CertificateAuthority CA = new CertificateAuthority();
-                CA.GenerateCSR(user.Email, user.Localitate, user.Judet);
-                _doctorRepository.Save();
-                TempData["Succes"] = "Inregistrare completa, in scurt timp vei fi contactat pe email";
-                return View(registerViewModel);
+            if (newUserResponse.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.Student);
 
             }
-            else
-            {
-                TempData["Error"] = "Token invalid.";
-                return View(registerViewModel);
-            }
-
+            //create student
+            var student = new Student();
+            student.StudentUserId = user.Id;
+            student.NumarMatricol = registerViewModelStud.NrMatricol;
+            student.IdSpecializare = registerViewModelStud.IdSpecializare;
+            student.AnDeStudii = registerViewModelStud.AnStudii;
+            student.ModulStudii = registerViewModelStud.ModulStudii;
+            _studentRepository.Add(student);
+            _studentRepository.Save();
+            return View(registerViewModelStud);
         }
         [HttpGet]
-        public async Task<IActionResult> Logout()
+        public async Task<IActionResult> RegisterProfesor()
         {
+#pragma warning disable CS8604 // Possible null reference argument.
 
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                var res2 = await _userManager.GetRolesAsync(user);
+#pragma warning restore CS8604 // Possible null reference argument.
+                string role = string.Join(", ", res2);
+                if (role == "profesor")
+                    return RedirectToAction("Index", "Profesor");
+                else if (role == "admin")
+                    return RedirectToAction("Index", "Admin");
+                else if (role == "student")
+                    return RedirectToAction("Index", "Student");
+                else if (role == "doctor")
+                    return RedirectToAction("Index", "Doctor");
+            }
+            var response = new RegisterViewModel();
+            return View(response);
         }
 
+
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterProfesor(RegisterViewModel registerViewModel)
+        {
+            //create user
+            var user = new User();
+            user.Nume = registerViewModel.Nume;
+            user.UserName = registerViewModel.Email;
+            user.Prenume = registerViewModel.Prenume;
+            user.Localitate = registerViewModel.Localitate;
+            user.Judet = registerViewModel.Judet;
+            user.TokenInregistrare = "";
+            user.StatusCont = 2;
+            user.Email = registerViewModel.Email;
+            var newUserResponse = await _userManager.CreateAsync(user, registerViewModel.Parola);
+            Debug.WriteLine("========================================");
+            Debug.WriteLine(newUserResponse.ToString());
+
+            if (newUserResponse.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.Profesor);
+
+            }
+            //create student
+            var profesor = new Profesor();
+            profesor.Nomenclatura = registerViewModel.Nomenclatura;
+            profesor.ProfesorUserId = user.Id;
+            _profesorRepository.Add(profesor);
+            _profesorRepository.Save();
+            return View(registerViewModel);
+        }
     }
 }

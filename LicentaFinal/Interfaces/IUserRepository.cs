@@ -12,5 +12,6 @@ namespace LicWeb.Interfaces
         bool Save();
         string GetIdByToken(string token);
         string GetIdByEmail(string email);
+
     }
 }

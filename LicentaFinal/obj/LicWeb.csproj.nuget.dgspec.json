@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\licenta\\LicentaFinal\\LicWeb.csproj": {}
+    "C:\\licenta\\LicentaFinal\\LicWeb.csproj": {}
   },
   "projects": {
-    "D:\\licenta\\LicentaFinal\\LicWeb.csproj": {
+    "C:\\licenta\\LicentaFinal\\LicWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\licenta\\LicentaFinal\\LicWeb.csproj",
+        "projectUniqueName": "C:\\licenta\\LicentaFinal\\LicWeb.csproj",
         "projectName": "LicWeb",
-        "projectPath": "D:\\licenta\\LicentaFinal\\LicWeb.csproj",
+        "projectPath": "C:\\licenta\\LicentaFinal\\LicWeb.csproj",
         "packagesPath": "C:\\Users\\Sebi\\.nuget\\packages\\",
-        "outputPath": "D:\\licenta\\LicentaFinal\\obj\\",
+        "outputPath": "C:\\licenta\\LicentaFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sebi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +41,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "DotNetZip": {
+              "target": "Package",
+              "version": "[1.16.0, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
@@ -60,11 +65,13 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",
@@ -85,6 +92,10 @@
             "bootstrap": {
               "target": "Package",
               "version": "[5.2.3, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
             },
             "mailkit": {
               "target": "Package",
@@ -110,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -11,5 +11,6 @@ namespace LicWeb.Interfaces
         bool Delete(Profesor profesor);
         bool Save();
         string GetUserIdFromProfId(int id);
+        Task<Profesor> GetByUID(string id);
     }
 }

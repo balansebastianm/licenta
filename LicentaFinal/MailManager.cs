@@ -29,7 +29,8 @@ namespace LicWeb
                 try
                 {
                     smtp.Connect("smtp.gmail.com", 587, false);
-                    smtp.Authenticate("lucrarelicenta2023@gmail.com", "lujengmcgxyytdtd");
+                    smtp.AuthenticationMechanisms.Remove("XOAUTH2");
+                    smtp.Authenticate("marcelistrate911@gmail.com", "ktptqexabhvmrrma");
                     smtp.Send(email);
                     smtp.Disconnect(true);
                 }
@@ -63,7 +64,7 @@ namespace LicWeb
                 try
                 {
                     smtp.Connect("smtp.gmail.com", 587, false);
-                    smtp.Authenticate("lucrarelicenta2023@gmail.com", "lujengmcgxyytdtd");
+                    smtp.Authenticate("marcelistrate911@gmail.com", "ktptqexabhvmrrma");
                     smtp.Send(email);
                     smtp.Disconnect(true);
                 }
@@ -99,7 +100,7 @@ namespace LicWeb
                 try
                 {
                     smtp.Connect("smtp.gmail.com", 587, false);
-                    smtp.Authenticate("lucrarelicenta2023@gmail.com", "lujengmcgxyytdtd");
+                    smtp.Authenticate("marcelistrate911@gmail.com", "ktptqexabhvmrrma");
                     smtp.Send(email);
                     smtp.Disconnect(true);
                 }
