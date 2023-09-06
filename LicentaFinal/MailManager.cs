@@ -30,6 +30,7 @@ namespace LicWeb
                 {
                     smtp.Connect("smtp.gmail.com", 587, false);
                     smtp.AuthenticationMechanisms.Remove("XOAUTH2");
+                    //obsolete credentials
                     smtp.Authenticate("marcelistrate911@gmail.com", "ktptqexabhvmrrma");
                     smtp.Send(email);
                     smtp.Disconnect(true);
@@ -100,6 +101,7 @@ namespace LicWeb
                 try
                 {
                     smtp.Connect("smtp.gmail.com", 587, false);
+                    //obsolete credentials
                     smtp.Authenticate("marcelistrate911@gmail.com", "ktptqexabhvmrrma");
                     smtp.Send(email);
                     smtp.Disconnect(true);
